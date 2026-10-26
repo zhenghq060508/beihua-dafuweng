@@ -125,6 +125,12 @@ button:focus-visible{outline:3px solid rgba(194,64,46,.5);outline-offset:2px}
 .pcard .pbar.gpa i{background:var(--c-quiz)}
 .pcard .pitems{font-size:10px;color:var(--muted);font-weight:600;display:flex;gap:6px;flex-wrap:wrap;min-height:13px}
 .pcard .pitems b{color:var(--ink)}
+.pcard .pitems span{display:inline-flex;align-items:center;gap:2px}
+.pcard .pitems .icon{width:12px;height:12px;color:var(--accent)}
+.bag-row{display:flex;align-items:center;gap:8px;padding:8px 4px;border-bottom:1px dashed #eee;font-size:13px}
+.bag-row b{min-width:64px}
+.bag-row em{flex:1;font-style:normal;color:var(--muted);font-size:12px}
+.btn.xs{padding:2px 8px;font-size:11px;border-radius:8px;line-height:1.4}
 .pcard .warn{border-color:var(--gold);background:#FFF9E8}
 .pcard .blocked{border-color:var(--bad);background:#FDEBEA}
 .pcard.dead{opacity:.45}
@@ -453,6 +459,15 @@ button:focus-visible{outline:3px solid rgba(194,64,46,.5);outline-offset:2px}
   <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 5h3l1.5-2h7L17 5h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/></symbol>
   <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M21.7 5.3 18 9l-3-3 3.7-3.7a7 7 0 0 0-8.8 8.8L3.7 14.4a3.2 3.2 0 0 0 4.5 4.5l6.2-6.2a7 7 0 0 0 8.8-8.8l-3.7 3.7-3-3 3.7-3.7a7 7 0 0 1 .5 4.4Z"/></symbol>
   <symbol id="i-splash" viewBox="0 0 24 24"><path d="M12 2c2 4 6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 4-7 6-11Zm0 8a3 3 0 0 0-3 3h2a1 1 0 0 1 2 0h2a3 3 0 0 0-3-3Z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 5h14l1 4H4L5 5Zm-1 6h16l-1 11H5L4 11Zm6 3v4h4v-4h-4Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11.3C4 6 6.7 4 9.5 4c1.2 0 2.3.5 2.5 1 .2-.5 1.3-1 2.5-1C17.3 4 20 6 20 9.7 20 15.7 12 21 12 21Z"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 3h11v9a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V3Zm2 2v7a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3V5H7Zm10 4h1a3 3 0 0 1 0 6h-1v-2h1a1 1 0 0 0 0-2h-1V9ZM3 21h14v-2H3v2Z"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><path d="M2 6h20v12H2V6Zm2 2v2h16V8H4Zm0 4v4h16v-4H4Z"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="5" cy="17" r="3.5"/><circle cx="19" cy="17" r="3.5"/><path d="M8.5 17 10 9h4m-4 0H8m2 0 2 3 3-3m-5 8 3-5 2 5M5.5 17h3M18.5 17h-3"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 5h18v4a2 2 0 0 0 0 6v4H3v-4a2 2 0 0 0 0-6V5Zm3 4v6h12V9H6Zm3 1h6v1H9v-1Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm-1 3h2v5.6l4 2.4-1 1.7-5-3V7Z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 5C7 5 2.7 8.6 1 12c1.7 3.4 6 7 11 7s9.3-3.6 11-7c-1.7-3.4-6-7-11-7Zm0 2.5A4.5 4.5 0 1 1 12 16a4.5 4.5 0 0 1 0-8.5Zm0 2A2.5 2.5 0 1 0 12 14a2.5 2.5 0 0 0 0-4.5Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5.3 3.4 9.4 8 11 4.6-1.6 8-5.7 8-11V5l-8-3Zm0 2.2 6 2.3v4.5c0 3.9-2.4 7-6 8.6-3.6-1.6-6-4.7-6-8.6V6.5l6-2.3Z"/></symbol>
 </svg>
 
 <!-- ===== 视图：设置 ===== -->
@@ -764,7 +779,9 @@ const EVENTS = {
     {t:"熬夜刷手机", d:"本想早点睡，刷着刷着就两点了。", eff:{e:-15,mo:-10}},
     {t:"奖学金到账", d:"学期奖学金到账，美滋滋。", eff:{m:200}},
     {t:"共享单车围城", d:"自行车被共享单车包围，花半小时才骑出来。", eff:{mo:-10}},
-    {t:"食堂排队太长", d:"食堂队伍太长，改点外卖，多花了点钱但吃到了好的。", eff:{m:-25,mo:10}}
+    {t:"食堂排队太长", d:"食堂队伍太长，改点外卖，多花了点钱但吃到了好的。", eff:{m:-25,mo:10}},
+    {t:"失物招领处", d:"有人捡到了你丢的校园卡送回来，你感激地回赠了张咖啡券。", eff:{mo:10}, item:"coffee"},
+    {t:"跳蚤市场", d:"在跳蚤市场淘到一张绝版暖宝宝，冬天有救了。", item:"warm"}
   ],
   animal: [
     {t:"大鹅学长", d:"大鹅学长正悠闲地在湖边散步，气场两米八。", feed:{m:-10,e:20,mo:8}, watch:{e:12}},
@@ -792,14 +809,101 @@ const EVENTS = {
 };
 
 /* ================= 道具 ================= */
+/* use 类型：self=回合内即时使用 · turn=装备后本次掷骰生效 · cell=装备后落地生效 / 立即传送 · quiz=问答考试时用 · passive=被动自动触发 */
 const ITEMS = [
-  {id:"hammer", name:"锤子", icon:"i-wrench", desc:"答题时可免答一次"},
-  {id:"goggles", name:"防护镜", icon:"i-splash", desc:"自动免疫一次负面状态"},
-  {id:"trinket", name:"亚克力小挂件", icon:"i-star2", desc:"获得时心情 +10%"},
-  {id:"laser", name:"激光切割片", icon:"i-bolt", desc:"获得时 +20~50 生活费"},
-  {id:"water", name:"水枪", icon:"i-splash", desc:"对任意玩家 -10 体力（互动）"},
-  {id:"coffee", name:"咖啡券", icon:"i-cup", desc:"给任意玩家 +10 体力（互动）"}
+  {id:"hammer", name:"锤子", icon:"i-wrench", desc:"问答/考试时可免答一次", use:"quiz"},
+  {id:"notes", name:"学霸笔记", icon:"i-book", desc:"问答/考试时答错自动纠正一次", use:"quiz"},
+  {id:"cheat", name:"小纸条", icon:"i-eye", desc:"问答/考试时直接偷看正确答案", use:"quiz"},
+  {id:"goggles", name:"防护镜", icon:"i-splash", desc:"自动免疫一次负面状态", use:"passive"},
+  {id:"guard", name:"保安卡", icon:"i-shield", desc:"自动免疫一次过路费（租金）", use:"passive"},
+  {id:"coffee", name:"咖啡券", icon:"i-cup", desc:"回合内使用：体力 +10", use:"self"},
+  {id:"drink", name:"能量饮料", icon:"i-bolt", desc:"回合内使用：体力 +20", use:"self"},
+  {id:"card", name:"校园卡", icon:"i-card", desc:"回合内使用：生活费 +100", use:"self"},
+  {id:"warm", name:"暖宝宝", icon:"i-heart", desc:"回合内使用：心情 +15", use:"self"},
+  {id:"bike", name:"共享单车券", icon:"i-bike", desc:"装备后本次掷骰 +2 步", use:"turn"},
+  {id:"skip", name:"免修卡", icon:"i-ticket", desc:"装备后下次落地跳过格子效果", use:"cell"},
+  {id:"swap", name:"时光胶囊", icon:"i-clock", desc:"立即回到 3 格前的位置", use:"cell"}
 ];
+/* 背包：每人最多 3 件，获得后存入，到自己回合可主动使用 */
+function bagOf(p){return p.bag||(p.bag=[]);}
+function addItem(p,id){
+  const it=ITEMS.find(x=>x.id===id);if(!it)return false;
+  const bag=bagOf(p);
+  if(bag.length>=3){toast("背包已满（3/3），先使用或丢弃已有道具");return false;}
+  bag.push(id);sfxWin();
+  if(NET.isHost)netSync();
+  renderAll();
+  return true;
+}
+function dropItemAt(i){
+  const p=curP();const bag=bagOf(p);
+  if(bag[i]===undefined)return;
+  const it=ITEMS.find(x=>x.id===bag[i]);
+  bag.splice(i,1);
+  if(NET.isHost)netSync();
+  renderAll();
+  toast((it?it.name:"道具")+" 已丢弃");
+}
+function useBagItemAt(i){
+  const p=curP();const bag=bagOf(p);
+  const id=bag[i];if(!id)return;
+  const it=ITEMS.find(x=>x.id===id);if(!it)return;
+  const consume=()=>{bag.splice(i,1);if(NET.isHost)netSync();};
+  if(it.use==="self"){
+    applyItemSelf(p,id);consume();closeModal();renderAll();
+    toast(it.name+" 已使用："+it.desc);
+  }
+  else if(it.use==="turn"){
+    p.buffTurn=id;consume();closeModal();renderAll();
+    toast(it.name+" 已装备：本次掷骰生效（+步数）");
+  }
+  else if(it.use==="cell"){
+    if(id==="skip"){p.buffSkip=1;consume();closeModal();renderAll();toast("免修卡已装备：下次落地跳过格子效果");}
+    else if(id==="swap"){
+      const np=(p.pos-3+BOARD.length)%BOARD.length;
+      movePieceAni(cur,np);p.pos=np;
+      consume();closeModal();renderAll();renderPlayers();refreshCells();
+      sfxClick();
+      setTimeout(()=>{landDepth=0;landOn(BOARD[np]);},450);
+    }
+  }
+  else{
+    toast(it.name+" 在对应时机自动生效，无需预先使用");
+  }
+}
+function applyItemSelf(p,id){
+  switch(id){
+    case "coffee": p.energy=clamp(p.energy+10,0,100);break;
+    case "drink": p.energy=clamp(p.energy+20,0,100);break;
+    case "card": p.cash=clamp(p.cash+100,0,999999);break;
+    case "warm": p.mood=clamp(p.mood+15,0,100);break;
+  }
+}
+function openBag(){
+  const p=curP();if(!p)return;
+  const bag=bagOf(p);
+  const head=modalHead("我的背包 · "+p.name,"i-bag");
+  const list=bag.length?bag.map((id,i)=>{
+    const it=ITEMS.find(x=>x.id===id);
+    const act=it.use==="quiz"||it.use==="passive"
+      ?`<span class="dim">（${it.use==="quiz"?"问答/考试时自动出现":"被动触发"}）</span>`
+      :`<button class="btn sm" onclick="useBagItemAt(${i})">使用</button>`;
+    return `<div class="bag-row">
+      <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px;flex:none"><use href="#${it.icon}" xlink:href="#${it.icon}"/></svg>
+      <b>${it.name}</b><em>${it.desc}</em>${act}
+      <button class="btn ghost xs" onclick="dropItemAt(${i})" title="丢弃">丢</button>
+    </div>`;
+  }).join(""):`<div class="dim" style="padding:8px 0">背包空空如也，去工程训练中心 / 机会卡 / 夜市套圈碰碰运气吧</div>`;
+  openModal(head+
+    `<div class="mdesc">背包上限 <b>3/3</b> · 到自己回合可主动使用 · 装备类道具掷骰时生效</div>
+    ${list}
+    <div class="mfoot"><button class="btn ghost sm" onclick="closeModal();renderAll()">关闭</button></div>`);
+}
+function netSync(){
+  if(!NET.isHost)return;
+  const root=$("#modal-root");
+  NET.broadcast({t:"sync",P:P,round:round,cur:cur,rolling:rolling,modal:root.classList.contains("show")?root.innerHTML:""});
+}
 
 /* ================= 规则 ================= */
 const RULES = {
@@ -844,15 +948,34 @@ function goBack(){if(viewStack.length>1){viewStack.pop();showView(viewStack[view
 function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2600);}
 
 /* ================= 弹窗 ================= */
-function openModal(html){
+function openModal(html,mode){
   const root=$("#modal-root");
+  root.dataset.mode=mode||"cell";
   root.innerHTML=`<div class="modal">${html}</div>`;
   root.classList.add("show");
 }
+/* 安全关闭弹窗：点 X / 点弹窗外时，按弹窗类型恢复游戏状态，绝不卡死 */
+function safeClose(){
+  const root=$("#modal-root");
+  if(!root.classList.contains("show"))return;
+  const mode=root.dataset.mode||"cell";
+  if(mode==="roll")return;                       // 骰子动画/等待确认移动中：完全忽略误触，弹窗保留
+  root.classList.remove("show");root.innerHTML="";
+  try{clearTimeout(timer);timer=null;}catch(e){}
+  if(window.cleanupMini){try{window.cleanupMini();}catch(e){}}
+  if(mode==="end"){try{settlement();}catch(e){}return;}  // 结算：重新展示
+  rolling=false;
+  try{renderAll();}catch(e){}
+  if(mode==="start"){try{renderAction();}catch(e){}}
+  else if(mode==="confirm"){try{afterMove();}catch(e){}}   // 骰子确认：继续落地
+  else if(mode==="dbl"){try{endTurnNow();}catch(e){}}      // 双数连掷：放弃连掷
+  else{try{endTurn();}catch(e){}}                          // 格子/答题/小游戏：放弃操作结束回合
+}
 function closeModal(){const root=$("#modal-root");root.classList.remove("show");root.innerHTML="";clearTimeout(timer);timer=null;if(window.cleanupMini){try{window.cleanupMini();}catch(e){}}}
 function modalHead(title,icon){
-  return `<div class="mhead"><div class="mtitle">${icon?'<svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24"><use href="#'+icon+'" xlink:href="#'+icon+'"/></svg>':""}${title}</div><button class="mclose" onclick="closeModal()"><svg class="icon" viewBox="0 0 24 24"><use href="#i-close" xlink:href="#i-close"/></svg></button></div>`;
+  return `<div class="mhead"><div class="mtitle">${icon?'<svg class="icon" style="width:22px;height:22px" viewBox="0 0 24 24"><use href="#'+icon+'" xlink:href="#'+icon+'"/></svg>':""}${title}</div><button class="mclose" onclick="safeClose()"><svg class="icon" viewBox="0 0 24 24"><use href="#i-close" xlink:href="#i-close"/></svg></button></div>`;
 }
+/* 点弹窗空白处不做任何事：弹窗保留，只能通过按钮或 X 操作，误触不再卡死 */
 function effLine(eff){
   if(!eff)return "";
   const parts=[];
@@ -893,7 +1016,7 @@ function newGame(){
   for(let i=0;i<n;i++){
     const inp=$("#pn-"+i);const name=(inp&&inp.value.trim())||("玩家"+(i+1));
     P.push({name,color:PCOLORS[i%4],cash:RULES.startMoney,gpa:RULES.startGpa,
-      energy:RULES.startEnergy,mood:RULES.startMood,pos:0,items:{hammer:0,goggles:0},
+      energy:RULES.startEnergy,mood:RULES.startMood,pos:0,bag:[],buffTurn:null,buffSkip:0,
       debuff:null,failStreak:0,alive:true,skip:0,props:{},dbl:0,bailout:0,xp:0});
   }
   renderAll();
@@ -901,7 +1024,7 @@ function newGame(){
   const c=curP();
   openModal(modalHead("游戏开始","i-crown")+`<div class="mdesc">欢迎来到<b>北化大富翁 · 昌平校区版</b>！<br>你们从<b>南校门</b>出发，绕校园一圈。<br><br>第一位行动的是 <b>${c.name}</b>。目标：40 轮后按<b>总评分</b>决出校园传奇！</div>
   <div class="eff-line">掷骰子耗 5 体力 · 经过南校门领 300 生活费 · 绩点上限 4.33</div>
-  <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAction()">开始掷骰</button></div>`);
+  <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAction()">开始掷骰</button></div>`,"start");
 }
 function curP(){return P[cur];}
 
@@ -963,10 +1086,8 @@ function renderPlayers(){
         return `<div class="pcard dead"><div class="pname"><span class="chip" style="background:${p.color}"></span><span>${p.name}</span></div><div class="pstats">已出局</div></div>`;
       }
       const cls=["pcard",i===cur?"active":"",p.gpa<RULES.gpaWarn&&p.gpa>=RULES.gpaBlock?"warn":"",p.gpa<RULES.gpaBlock||p.mood<=0||p.energy<5?"blocked":""].join(" ");
-      const items=[];if(p.items.hammer>0)items.push(`<span>锤×${p.items.hammer}</span>`);
-      if(p.items.goggles>0)items.push(`<span>镜×${p.items.goggles}</span>`);
-      if(p.items.water>0)items.push(`<span style="cursor:pointer;color:var(--accent)" onclick="useItem('water')" title="水枪：对任意玩家 -10 体力">水×${p.items.water}</span>`);
-      if(p.items.coffee>0)items.push(`<span style="cursor:pointer;color:var(--good)" onclick="useItem('coffee')" title="咖啡券：给任意玩家 +10 体力">咖×${p.items.coffee}</span>`);
+      const bag=bagOf(p);
+      const items=bag.length?bag.map(id=>{const it=ITEMS.find(x=>x.id===id);return it?`<span title="${it.desc}"><svg class="icon" viewBox="0 0 24 24"><use href="#${it.icon}" xlink:href="#${it.icon}"/></svg></span>`:"";}):[];
       const db=p.debuff?"<b style='color:var(--bad)'>挫</b>":"";
       const mi='<svg class="icon" style="width:11px;height:11px" viewBox="0 0 24 24"><use href="#i-money" xlink:href="#i-money"/></svg>';
       const di='<svg class="icon" style="width:11px;height:11px" viewBox="0 0 24 24"><use href="#i-dorm" xlink:href="#i-dorm"/></svg>';
@@ -1020,9 +1141,14 @@ function renderAction(){
     return;
   }
   const rollCost=RULES.rollCost*(p.mood<=RULES.moodLow?2:1);
+  const bag=bagOf(p);
+  const bagBtn=bag.length?`<button class="btn ghost sm" id="btn-bag" onclick="openBag()"><svg class="icon" viewBox="0 0 24 24"><use href="#i-bag" xlink:href="#i-bag"/></svg>背包(${bag.length}/3)</button>`:"";
   mk(`<div class="actinfo"><b>${p.name}</b> 行动<span class="dim">掷骰消耗 ${rollCost} 体力 · 已进行 ${round-1} / ${RULES.maxRounds} 轮</span>${wait}</div>
     <div style="display:flex;gap:6px"><div class="dice" id="dice-anim"></div><div class="dice" id="dice-anim2"></div></div>
-    <button class="btn" id="btn-roll" onclick="doRoll()" ${myTurn?"":"disabled"}><svg class="icon" viewBox="0 0 24 24"><use href="#i-dice" xlink:href="#i-dice"/></svg>掷骰子</button>`);
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="btn" id="btn-roll" onclick="doRoll()" ${myTurn?"":"disabled"}><svg class="icon" viewBox="0 0 24 24"><use href="#i-dice" xlink:href="#i-dice"/></svg>掷骰子</button>
+      ${bagBtn}
+    </div>`);
   setDice(1);
 }
 function renderHint(){
@@ -1065,6 +1191,11 @@ function doRoll(){
     note=`<div class="eff-line bad">自信心受挫：骰子点数减半，掷出 ${d}</div>`;
     p.debuff=null;
   }
+  if(p.buffTurn==="bike"){
+    d+=2;
+    note+=`<div class="eff-line good">共享单车券：多走 2 步（${d1}+${d2}=${d1+d2} → ${d}）</div>`;
+    p.buffTurn=null;
+  }
   p.dbl=(d1===d2)?1:0;
   p.energy=clamp(p.energy-cost,0,100);
   const old=p.pos;
@@ -1087,7 +1218,7 @@ function confirmMove(){
     openModal(modalHead("掷骰子","i-dice")+
       `<div class="mdesc center" style="font-size:20px;font-weight:800">${d} 点</div>
       <div class="mdesc"><b>${p.name}</b> 前进 ${d} 格，来到 <b>${cell.name}</b><br>${note}${passMsg}</div>
-      <div class="mfoot"><button class="btn sm" onclick="closeModal();afterMove()">继续</button></div>`);
+      <div class="mfoot"><button class="btn sm" onclick="closeModal();afterMove()">继续</button></div>`,"confirm");
   },450);
 }
 function movePieceAni(i,pos){
@@ -1110,7 +1241,7 @@ function endTurn(){
       <div class="mfoot">
         <button class="btn" onclick="doRoll()">再掷一次</button>
         <button class="btn ghost sm" onclick="closeModal();endTurnNow()">结束回合</button>
-      </div>`);
+      </div>`,"dbl");
     return;
   }
   endTurnNow();
@@ -1134,6 +1265,11 @@ function restTurn(){const p=curP();p.energy=clamp(p.energy+30,0,100);toast(p.nam
 function landOn(cell){
   const p=curP();
   if(landDepth>4){endTurn();return;}
+  if(p.buffSkip){
+    p.buffSkip=0;sfxClick();toast("免修卡生效：跳过此格效果");
+    if(NET.isHost)netSync();
+    endTurn();return;
+  }
   switch(cell.type){
     case "start": onStart(cell);break;
     case "wheel": onWheel(cell);break;
@@ -1225,6 +1361,17 @@ function upgradeProp(id){
 function rentEvent(cell,own){
   const p=curP();const o=P[own];
   const lv=o.props[cell.id];
+  const bag=bagOf(p);
+  const gi=bag.indexOf("guard");
+  if(gi>=0){
+    bag.splice(gi,1);sfxClick();
+    if(NET.isHost)netSync();
+    openModal(modalHead(cell.name+" · 过路费","i-dorm")+
+      `<div class="mdesc"><b>${o.name}</b> 拥有 ${cell.name}（${lv} 级），应收 <b>${rentOf(cell,lv)}</b> 生活费。</div>
+      <div class="eff-line good">保安卡生效：替你挡下了这笔过路费！</div>
+      <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
+    return;
+  }
   let amt=rentOf(cell,lv);
   let soldMsg="";
   if(p.cash<amt){
@@ -1373,7 +1520,12 @@ const CHANCE_POOL=[
   {t:"免费地铁券",d:"抽到一张免费地铁券，下次传送免费。",eff:{ticket:true}},
   {t:"前进 2 格",d:"食堂新品上市，顺路去尝尝。",move:2},
   {t:"后退 2 格",d:"想起来忘带校园卡，折返回去。",move:-2},
-  {t:"校园彩票",d:"花 50 生活费买一张校园彩票，立刻开奖。",lottery:true}
+  {t:"校园彩票",d:"花 50 生活费买一张校园彩票，立刻开奖。",lottery:true},
+  {t:"捡到学霸笔记",d:"自习室桌斗里捡到一本学霸笔记，赚了。",item:"notes"},
+  {t:"便利店抽奖",d:"买瓶水顺手抽了个奖，中了咖啡券。",item:"coffee"},
+  {t:"拾金不昧",d:"把捡到的校园卡送到失物招领处，好人卡+1。",item:"card"},
+  {t:"帮保安大爷搬东西",d:"大爷送你一张保安卡聊表谢意。",item:"guard"},
+  {t:"体育场捡到单车券",d:"停车棚捡到一张共享单车月卡，运气不错。",item:"bike"}
 ];
 function onChance(cell){
   const c=pick(CHANCE_POOL);
@@ -1385,6 +1537,20 @@ function onChance(cell){
 }
 function chanceDraw(){
   const p=curP();const c=window.__chance||{};window.__chance=null;
+  if(c.item){
+    const it=ITEMS.find(x=>x.id===c.item);
+    if(addItem(p,c.item)){
+      openModal(modalHead("机会卡","i-star")+
+        `<div class="eff-line good">${c.t}：获得 <b>${it.name}</b>（背包 ${bagOf(p).length}/3）</div>
+        <div class="mdesc">${it.desc} · 到自己回合可在【背包】使用</div>
+        <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
+    }else{
+      openModal(modalHead("机会卡","i-star")+
+        `<div class="eff-line flat">${c.t}：背包已满（3/3），道具放不下啦</div>
+        <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
+    }
+    return;
+  }
   if(c.lottery){
     if(p.cash<50){openModal(modalHead("彩票","i-star")+`<div class="mdesc">想买彩票但生活费不足 50。</div>
       <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);return;}
@@ -1426,6 +1592,8 @@ const RING_POOL=[
   {n:"套中冰红茶一瓶",eff:{m:50}},
   {n:"套中布偶娃娃",eff:{mo:15}},
   {n:"套中幸运徽章",eff:{g:0.03}},
+  {n:"套中能量饮料",item:"drink"},
+  {n:"套中暖宝宝",item:"warm"},
   {n:"套了个寂寞",eff:null}
 ];
 function onRing(cell){
@@ -1442,9 +1610,10 @@ function ringThrow(){
   const p=curP();p.cash=clamp(p.cash-20,0,999999);
   const r=pick(RING_POOL);
   if(r.eff)applyEff(p,r.eff);
+  if(r.item)addItem(p,r.item);
   sfxWin();
   openModal(modalHead("套圈结果","i-plaza")+
-    `<div class="eff-line ${r.eff?"good":"flat"}">${r.n}${r.eff?"："+effLine(r.eff):""}</div>
+    `<div class="eff-line ${r.eff||r.item?"good":"flat"}">${r.n}${r.eff?"："+effLine(r.eff):""}${r.item?` · 获得 <b>${ITEMS.find(x=>x.id===r.item).name}</b>（背包 ${bagOf(p).length}/3）`:""}</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
 }
 function onSelfStudy(cell){
@@ -1594,18 +1763,25 @@ function quizSingle(subj){
   const p=curP();
   if(!studyOK(p)){toast(NO_STUDY_MSG);return;}
   const q=pick(QSETS[subj]);
+  const bag=bagOf(p);
+  const toolBtns=[];
+  if(bag.includes("hammer"))toolBtns.push(`<button class="btn ghost sm" onclick="useHammer()">锤子：免答</button>`);
+  if(bag.includes("notes"))toolBtns.push(`<button class="btn ghost sm" onclick="useNotes()">学霸笔记：答错纠正</button>`);
+  if(bag.includes("cheat"))toolBtns.push(`<button class="btn ghost sm" onclick="useCheat()">小纸条：看答案</button>`);
   openModal(modalHead("单题问答 · "+QSUBJ_LABEL[subj],"i-quiz")+
     `<div class="qcard">${q.q}</div>
     <div class="opts">
       ${q.opts.map((o,i)=>`<button class="opt" onclick="answer(${i})"><span class="key">${"ABCD"[i]}</span><span>${o}</span></button>`).join("")}
     </div>
-    ${p.items.hammer>0?`<div class="mfoot" style="justify-content:flex-start"><button class="btn ghost sm" onclick="useHammer()">锤子：免答一次（剩余 ${p.items.hammer}）</button></div>`:""}`);
+    ${toolBtns.length?`<div class="mfoot" style="justify-content:flex-start">${toolBtns.join("")}</div>`:""}`);
   window.__q=q;window.__qDone=false;
 }
 function answer(idx){
-  if(window.__qDone)return;window.__qDone=true;
+  if(window.__qDone)return;
   const p=curP();const q=window.__q;
-  const correct=idx===q.a;
+  let correct=idx===q.a;
+  if(!correct&&window.__qNotes){window.__qNotes=0;correct=true;toast("学霸笔记生效：答错自动纠正！");}
+  window.__qDone=true;
   const btns=$$(".opt");
   if(correct){if(btns[idx])btns[idx].classList.add("correct");p.failStreak=0;p.gpa=clamp(p.gpa+RULES.quizWin,0,RULES.gpaMax);sfxWin();}
   else{
@@ -1614,7 +1790,8 @@ function answer(idx){
     p.gpa=clamp(p.gpa+RULES.quizLose,0,RULES.gpaMax);p.failStreak++;
     sfxBad();
     if(p.failStreak>=RULES.failStreakNeed){
-      if(p.items.goggles>0){p.items.goggles--;toast("防护镜生效，免疫了「自信心受挫」！");}
+      const bag=bagOf(p);const gi=bag.indexOf("goggles");
+      if(gi>=0){bag.splice(gi,1);toast("防护镜生效，免疫了「自信心受挫」！");if(NET.isHost)netSync();}
       else{p.debuff="confidence";toast("连续答错 2 次：自信心受挫（下次骰子点数减半）");}
       p.failStreak=0;
     }
@@ -1630,12 +1807,37 @@ function answer(idx){
 }
 function useHammer(){
   if(window.__qDone)return;
-  const p=curP();
-  if(p.items.hammer<=0)return;
-  p.items.hammer--;
+  const p=curP();const bag=bagOf(p);
+  const i=bag.indexOf("hammer");if(i<0)return;
+  bag.splice(i,1);
   window.__qDone=true;
+  if(NET.isHost)netSync();
   toast("使用锤子免答一次");
   closeModal();renderAll();endTurn();
+}
+function useNotes(){
+  if(window.__qDone)return;
+  const p=curP();const bag=bagOf(p);
+  const i=bag.indexOf("notes");if(i<0)return;
+  bag.splice(i,1);
+  window.__qNotes=1;
+  if(NET.isHost)netSync();
+  toast("学霸笔记已翻开：答错会自动纠正一次");
+}
+function useCheat(){
+  if(window.__qDone)return;
+  const p=curP();const bag=bagOf(p);
+  const i=bag.indexOf("cheat");if(i<0)return;
+  bag.splice(i,1);
+  const q=window.__q;
+  window.__qDone=true;
+  if(NET.isHost)netSync();
+  p.failStreak=0;p.gpa=clamp(p.gpa+RULES.quizWin,0,RULES.gpaMax);sfxWin();
+  const card=$("#modal-root .modal");
+  card.innerHTML=modalHead("小纸条","i-eye")+
+    `<div class="eff-line good">偷看小纸条：正确答案 <b>${"ABCD"[q.a]} · ${q.opts[q.a]}</b></div>
+    <div class="eff-line">小纸条帮你答对了这道题：绩点 +0.05 → ${p.gpa.toFixed(2)}</div>
+    <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 function onLab(cell){
   const p=curP();
@@ -1930,51 +2132,29 @@ function onCraft(cell){
     return;
   }
   openModal(modalHead(cell.name+" · 道具工坊","i-gym")+
-    `<div class="mdesc">消耗 <b>${RULES.craftCost} 体力</b>，随机获得一件道具：<br>锤子（免答一次）· 防护镜（免疫一次 debuff）· 亚克力挂件（+10% 心情）· 激光切割片（+20~50 生活费）</div>
+    `<div class="mdesc">消耗 <b>${RULES.craftCost} 体力</b>，加工一件随机道具存入背包（最多 3 件）：<br>锤子 · 学霸笔记 · 小纸条 · 防护镜 · 保安卡 · 咖啡券 · 能量饮料 · 校园卡 · 暖宝宝 · 共享单车券 · 免修卡 · 时光胶囊</div>
     <div class="mfoot"><button class="btn" onclick="doCraft()">开始加工</button><button class="btn ghost sm" onclick="closeModal();endTurn()">离开</button></div>`);
 }
 function doCraft(){
   const p=curP();p.energy=clamp(p.energy-RULES.craftCost,0,100);
+  const bag=bagOf(p);
+  if(bag.length>=3){
+    const m=$("#modal-root .modal");
+    m.innerHTML=modalHead("加工完成！","i-gym")+
+      `<div class="eff-line flat">背包已满（3/3）！加工出的道具没地方放，白忙一场。</div>
+      <div class="mdesc">体力 -${RULES.craftCost} → <b>${p.energy}</b> · 到自己回合点【背包】丢弃一件再来吧</div>
+      <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
+    return;
+  }
   const item=pick(ITEMS);
-  let line="";
-  if(item.id==="hammer"){p.items.hammer++;line=`获得 <b>${item.name}</b>：${item.desc}`;}
-  else if(item.id==="goggles"){p.items.goggles++;line=`获得 <b>${item.name}</b>：${item.desc}`;}
-  else if(item.id==="trinket"){p.mood=clamp(p.mood+10,0,100);line=`获得 <b>${item.name}</b>：心情 +10%`;}
-  else if(item.id==="water"){p.items.water=(p.items.water||0)+1;line=`获得 <b>${item.name}</b>：可对任意玩家使用`;}
-  else if(item.id==="coffee"){p.items.coffee=(p.items.coffee||0)+1;line=`获得 <b>${item.name}</b>：可给任意玩家使用`;}
-  else{const m=rnd(20,50);p.cash=clamp(p.cash+m,0,999999);line=`获得 <b>${item.name}</b>：生活费 +${m}`;}
+  bag.push(item.id);
+  if(NET.isHost)netSync();
   sfxWin();
   const m=$("#modal-root .modal");
   m.innerHTML=modalHead("加工完成！","i-gym")+
-    `<div class="eff-line good">${line}</div>
-    <div class="mdesc">体力 -${RULES.craftCost} → <b>${p.energy}</b></div>
+    `<div class="eff-line good">获得 <b>${item.name}</b>：${item.desc}</div>
+    <div class="mdesc">体力 -${RULES.craftCost} → <b>${p.energy}</b> · 背包 ${bag.length}/3 · 到自己回合可使用</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
-}
-/* ---- 互动道具（水枪 / 咖啡券） ---- */
-function useItem(item){
-  const p=curP();
-  const cnt=p.items[item]||0;
-  if(cnt<=0){toast("没有该道具");return;}
-  const targets=P.map((q,i)=>({i,alive:q.alive})).filter(t=>t.alive);
-  if(targets.length<=1){toast("只有你自己，无法使用互动道具");return;}
-  openModal(modalHead(item==="water"?"水枪 · 选目标":"咖啡券 · 选目标",item==="water"?"i-splash":"i-cup")+
-    `<div class="mdesc">${item==="water"?"呲水枪，让 TA 体力 -10":"请 TA 喝杯咖啡，体力 +10"}（自己也可以）</div>
-    <div class="opts">
-      ${targets.map(t=>`<button class="opt" onclick="useItemTo('${item}',${t.i})"><span class="key">${t.i+1}</span><span>${P[t.i].name}</span></button>`).join("")}
-    </div>
-    <div class="mfoot"><button class="btn ghost sm" onclick="closeModal()">取消</button></div>`);
-}
-function useItemTo(item,t){
-  const p=curP();
-  if((p.items[item]||0)<=0)return;
-  p.items[item]--;
-  const q=P[t];
-  if(item==="water"){q.energy=clamp(q.energy-10,0,100);sfxWin();}
-  else{q.energy=clamp(q.energy+10,0,100);sfxClick();}
-  openModal(modalHead("道具使用","i-gym")+
-    `<div class="eff-line ${item==="coffee"?"good":"bad"}">${item==="water"?`你向 <b>${q.name}</b> 呲了水枪：体力 -10`:`你把咖啡券送给了 <b>${q.name}</b>：体力 +10`}</div>
-    <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll()">继续</button></div>`);
-  renderPlayers();
 }
 
 function onBus(cell){
@@ -1992,9 +2172,10 @@ function onBus(cell){
 }
 function onEvent(cell){
   const p=curP();const ev=pick(EVENTS.life);applyEff(p,ev.eff);
+  if(ev.item)addItem(p,ev.item);
   openModal(modalHead(cell.name+" · "+ev.t,"i-flower")+
     `<div class="mdesc">${ev.d}</div>
-    <div class="eff-line ${(ev.eff.m||0)<0?"bad":"good"}">${effLine(ev.eff)}</div>
+    <div class="eff-line ${(ev.eff.m||0)<0?"bad":"good"}">${effLine(ev.eff)}${ev.item?` · 获得 <b>${ITEMS.find(x=>x.id===ev.item).name}</b>（背包 ${bagOf(p).length}/3）`:""}</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
 }
 function onDining(cell){
@@ -2081,19 +2262,26 @@ function onExam(cell){
     return;
   }
   const q=pick(QSETS.prof);
+  const bag=bagOf(p);
+  const toolBtns=[];
+  if(bag.includes("hammer"))toolBtns.push(`<button class="btn ghost sm" onclick="useHammerExam()">锤子：免考</button>`);
+  if(bag.includes("notes"))toolBtns.push(`<button class="btn ghost sm" onclick="useNotesExam()">学霸笔记：答错纠正</button>`);
+  if(bag.includes("cheat"))toolBtns.push(`<button class="btn ghost sm" onclick="useCheatExam()">小纸条：看答案</button>`);
   openModal(modalHead(cell.name+" · 综合考试","i-exam")+
-    `<div class="mdesc" style="font-size:12px">答对 <b>+0.1 绩点</b>，答错 <b>-0.05 绩点</b>（锤子可免考）</div>
+    `<div class="mdesc" style="font-size:12px">答对 <b>+0.1 绩点</b>，答错 <b>-0.05 绩点</b>（可用道具）</div>
     <div class="qcard">${q.q}</div>
     <div class="opts">
       ${q.opts.map((o,i)=>`<button class="opt" onclick="examAnswer(${i})"><span class="key">${"ABCD"[i]}</span><span>${o}</span></button>`).join("")}
     </div>
-    ${p.items.hammer>0?`<div class="mfoot" style="justify-content:flex-start"><button class="btn ghost sm" onclick="useHammerExam()">锤子：免考一次（剩余 ${p.items.hammer}）</button></div>`:""}`);
+    ${toolBtns.length?`<div class="mfoot" style="justify-content:flex-start">${toolBtns.join("")}</div>`:""}`);
   window.__q=q;window.__qDone=false;
 }
 function examAnswer(idx){
-  if(window.__qDone)return;window.__qDone=true;
+  if(window.__qDone)return;
   const p=curP();const q=window.__q;
-  const correct=idx===q.a;
+  let correct=idx===q.a;
+  if(!correct&&window.__qNotes){window.__qNotes=0;correct=true;toast("学霸笔记生效：答错自动纠正！");}
+  window.__qDone=true;
   const btns=$$(".opt");
   if(correct){if(btns[idx])btns[idx].classList.add("correct");p.failStreak=0;p.gpa=clamp(p.gpa+RULES.examWin,0,RULES.gpaMax);sfxWin();}
   else{
@@ -2101,7 +2289,8 @@ function examAnswer(idx){
     const rb=btns[q.a];if(rb)rb.classList.add("correct");
     p.gpa=clamp(p.gpa+RULES.examLose,0,RULES.gpaMax);p.failStreak++;sfxBad();
     if(p.failStreak>=RULES.failStreakNeed){
-      if(p.items.goggles>0){p.items.goggles--;toast("防护镜生效，免疫了「自信心受挫」！");}
+      const bag=bagOf(p);const gi=bag.indexOf("goggles");
+      if(gi>=0){bag.splice(gi,1);toast("防护镜生效，免疫了「自信心受挫」！");if(NET.isHost)netSync();}
       else{p.debuff="confidence";toast("连续答错 2 次：自信心受挫（下次骰子点数减半）");}
       p.failStreak=0;
     }
@@ -2117,10 +2306,35 @@ function examAnswer(idx){
 }
 function useHammerExam(){
   if(window.__qDone)return;
-  const p=curP();if(p.items.hammer<=0)return;
-  p.items.hammer--;window.__qDone=true;
+  const p=curP();const bag=bagOf(p);
+  const i=bag.indexOf("hammer");if(i<0)return;
+  bag.splice(i,1);window.__qDone=true;
+  if(NET.isHost)netSync();
   toast("使用锤子免考一次");
   closeModal();renderAll();endTurn();
+}
+function useNotesExam(){
+  if(window.__qDone)return;
+  const p=curP();const bag=bagOf(p);
+  const i=bag.indexOf("notes");if(i<0)return;
+  bag.splice(i,1);window.__qNotes=1;
+  if(NET.isHost)netSync();
+  toast("学霸笔记已翻开：答错会自动纠正一次");
+}
+function useCheatExam(){
+  if(window.__qDone)return;
+  const p=curP();const bag=bagOf(p);
+  const i=bag.indexOf("cheat");if(i<0)return;
+  bag.splice(i,1);
+  const q=window.__q;
+  window.__qDone=true;
+  if(NET.isHost)netSync();
+  p.failStreak=0;p.gpa=clamp(p.gpa+RULES.examWin,0,RULES.gpaMax);sfxWin();
+  const card=$("#modal-root .modal");
+  card.innerHTML=modalHead("小纸条","i-eye")+
+    `<div class="eff-line good">偷看小纸条：正确答案 <b>${"ABCD"[q.a]} · ${q.opts[q.a]}</b></div>
+    <div class="eff-line">小纸条帮你通过了考试：绩点 +0.1 → ${p.gpa.toFixed(2)}</div>
+    <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 function onActivity(cell){
   const p=curP();const ev=pick(EVENTS.activity);
@@ -2141,9 +2355,15 @@ function onActivity(cell){
 function joinActivity(){
   const p=curP();const ev=window.__act;
   p.energy=clamp(p.energy-5,0,100);applyEff(p,ev.eff);sfxWin();
+  let itemLine="";
+  if(Math.random()<0.3){
+    const it=pick(ITEMS);
+    if(addItem(p,it.id))itemLine=`<div class="eff-line good">还顺手摸到一件 <b>${it.name}</b>！（背包 ${bagOf(p).length}/3）</div>`;
+    else itemLine=`<div class="eff-line flat">背包已满，活动小礼物放不下了。</div>`;
+  }
   const m=$("#modal-root .modal");
   m.innerHTML=modalHead("参加活动","i-plaza")+
-    `<div class="eff-line good">${effLine(ev.eff)}（体力 -5）</div>
+    `<div class="eff-line good">${effLine(ev.eff)}（体力 -5）</div>${itemLine}
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 function onSport(cell){
@@ -2306,7 +2526,7 @@ function settlement(){
     `<div class="mdesc" style="text-align:center;font-weight:800;color:var(--accent)">${medal}</div>
     <div class="rank-list">${list}</div>
     <div class="eff-line">总评分 = 生活费 + GPA×${RULES.scoreGpa} + 心情×${RULES.scoreMood} + 体力×${RULES.scoreEnergy}</div>
-    <div class="mfoot"><button class="btn" onclick="closeModal();backSetup()">再来一局</button></div>`);
+    <div class="mfoot"><button class="btn" onclick="closeModal();backSetup()">再来一局</button></div>`,"end");
 }
 function backSetup(){if(NET.mode!=="local")NET.reset();showView("view-setup");}
 
@@ -2364,7 +2584,7 @@ function renderHelp(){
       <li>文理楼：自习（-8 体力 +0.05）/ 膜拜马克思雕像（+0.02）/ 翻转课堂（你来讲课 ±绩点）</li>
       <li>实验楼 A/F：实验挑战（-10 体力，70% 成功 +0.1 绩点）</li>
       <li>柳湖：大鹅学长、猫学长、蛤蟆先生等（喂食或远观，加体力/心情）</li>
-      <li>工程训练中心：消耗 15 体力随机获得道具（锤子/防护镜/挂件/激光切割片）</li>
+      <li>工程训练中心：消耗 15 体力加工一件随机道具（12 种），存入背包</li>
       <li>花海：大学生活随机事件（有正面有负面）</li>
       <li>玉兰餐厅：玉兰一 / 玉兰二（-15/-18 生活费 +心情）</li>
       <li>紫竹餐厅：紫竹一/二/三、民族食堂、满座食堂（10~18 生活费）</li>
@@ -2377,12 +2597,14 @@ function renderHelp(){
       <li>超市：烛光 / 水果 / 快递超市随机（-15/-15/-20 生活费 +15 体力 +10 心情）</li>
       <li>快递驿站：快递特殊事件；打印店：打印资料（-50 生活费 +0.05 绩点）</li>
     </ul>
-    <h2>道具</h2>
+    <h2>道具 & 背包</h2>
     <ul>
-      <li>锤子：答题/考试时可免答一次</li>
-      <li>防护镜：自动免疫一次负面状态（debuff）</li>
-      <li>亚克力小挂件：获得时心情 +10%</li>
-      <li>激光切割片：获得时 +20~50 生活费</li>
+      <li><b>背包上限 3 件</b>：获得道具先存进背包，到自己回合可在行动区点【背包】主动使用或丢弃</li>
+      <li><b>问答/考试类</b>：锤子（免答一次）· 学霸笔记（答错自动纠正）· 小纸条（偷看正确答案）</li>
+      <li><b>被动类</b>：防护镜（免疫一次负面状态）· 保安卡（免疫一次过路费）</li>
+      <li><b>即时类（回合内使用）</b>：咖啡券（+10 体力）· 能量饮料（+20 体力）· 校园卡（+100 生活费）· 暖宝宝（+15 心情）</li>
+      <li><b>装备类（掷骰/落地生效）</b>：共享单车券（本次掷骰 +2 步）· 免修卡（下次落地跳过格子效果）· 时光胶囊（回到 3 格前）</li>
+      <li><b>获得渠道</b>：工程训练中心（15 体力随机加工）· 机会卡 · 校园事件 · 夜市套圈 · 参加活动</li>
     </ul>
     <h2>图例</h2>
     <div class="legend">${catList}</div>
@@ -2416,7 +2638,7 @@ function init(){
   autoRelayUrl();
   fetchExternal();
   fetchQuiz();
-  $("#modal-root").addEventListener("click",e=>{if(e.target.id==="modal-root")closeModal();});
+  /* 点弹窗空白处不关闭弹窗，杜绝误触卡死（已移除旧的 overlay 点击关闭监听） */
 }
 
 /* ================= 联机层（PeerJS P2P，房主权威） ================= */
@@ -2697,7 +2919,7 @@ function rollUI(d1,d2,d,note,passMsg){
   openModal(modalHead("掷骰子","i-dice")+
     `<div class="mdesc center"><b>${p.name}</b> 掷骰中…</div>
     <div class="dice-big-box"><div class="dice dice-big" id="dice-anim"></div><div class="dice dice-big" id="dice-anim2"></div></div>
-    <div class="dice-result" id="dice-result"></div>`);
+    <div class="dice-result" id="dice-result"></div>`,"roll");
   const mc=$("#modal-root .mclose");if(mc)mc.style.display="none";
   setDice(1,0);setDice(1,1);
   const dEl=$("#modal-root #dice-anim"),dEl2=$("#modal-root #dice-anim2");
@@ -2711,7 +2933,7 @@ function rollUI(d1,d2,d,note,passMsg){
     if(dEl2){dEl2.classList.remove("rolling");dEl2.classList.add("land");}
     const r=$("#dice-result");
     if(r){
-      r.textContent=d1+" + "+d2+" = "+sum+" 点"+(d!==sum?"（受挫减半 → 实际走 "+d+" 格）":"");
+      r.textContent=d1+" + "+d2+" = "+sum+" 点"+(d!==sum?(d>sum?"（道具加成 → 实际走 "+d+" 格）":"（受挫减半 → 实际走 "+d+" 格）"):"");
       const f=document.createElement("div");
       f.className="mfoot";f.style.justifyContent="center";
       f.innerHTML=`<button class="btn" onclick="confirmMove()">确认移动</button>`;
@@ -2725,7 +2947,7 @@ function startNetGame(){
   P=[];round=1;cur=0;rolling=false;selProp="";
   NET.players.forEach(q=>{
     P.push({name:q.name,color:q.color,cash:RULES.startMoney,gpa:RULES.startGpa,
-      energy:RULES.startEnergy,mood:RULES.startMood,pos:0,items:{hammer:0,goggles:0},
+      energy:RULES.startEnergy,mood:RULES.startMood,pos:0,bag:[],buffTurn:null,buffSkip:0,
       debuff:null,failStreak:0,alive:true,skip:0,props:{},dbl:0});
   });
   NET.started=true;
@@ -3188,7 +3410,7 @@ const MINI_QUIZ=[
   {q:"在哪里可以膜拜马克思雕像？",opts:["文理楼","一教","实验楼","杏坛苑"],a:0},
   {q:"踩到哪个格会可能被蚊子咬？",opts:["荷塘","花海","柳湖","樱花园"],a:0},
   {q:"连续答错几次会获得「自信心受挫」debuff？",opts:["2 次","3 次","1 次","4 次"],a:0},
-  {q:"哪件道具可以免疫一次负面状态？",opts:["防护镜","锤子","亚克力挂件","激光切割片"],a:0},
+  {q:"哪件道具可以免疫一次负面状态？",opts:["防护镜","保安卡","暖宝宝","咖啡券"],a:0},
   {q:"西校门吃顿好的要花多少生活费？",opts:["100-200","50-100","200-300","20-50"],a:0},
   {q:"同一片区集齐几处地产能形成垄断？",opts:["3 处","2 处","4 处","5 处"],a:0},
   {q:"阶梯教室转盘抽到什么会扣绩点？",opts:["-0.02","+0.1","+0.05","+0"],a:0}
@@ -7628,7 +7850,7 @@ function fortuneDraw(){
 
 function installNetShims(){
   if(NET.shimmed)return;NET.shimmed=true;
-  const acts=["afterMove","endTurn","studySkip","moodRest","restTurn","useHammer","useHammerExam","doLab","feedAnimal","watchAnimal","doStudy","doWorship","doCraft","joinActivity","doExercise","buyWater","drinkTea","lakeZoned","lakePhoto","doClimb","doPhoto","doPrint","spin","chanceDraw","ringThrow","doSelfStudy","auctionBid","auctionPass","flipClass","betExam"];
+  const acts=["afterMove","endTurn","studySkip","moodRest","restTurn","useHammer","useNotes","useCheat","useHammerExam","useNotesExam","useCheatExam","dropItemAt","useBagItemAt","doLab","feedAnimal","watchAnimal","doStudy","doWorship","doCraft","joinActivity","doExercise","buyWater","drinkTea","lakeZoned","lakePhoto","doClimb","doPhoto","doPrint","spin","chanceDraw","ringThrow","doSelfStudy","auctionBid","auctionPass","flipClass","betExam"];
   acts.forEach(n=>{
     const fn=window[n];
     window[n]=function(){if(NET.mode==="client"){NET.send({t:"act",act:n,p:NET.myIdx});return;}
