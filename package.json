@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "bdu-fortune-monopoly",
   "version": "1.0.0",
   "description": "北化大富翁 · 联机中继服务器（WebSocket + 在线题库 + 静态页面）",
