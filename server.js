@@ -30,13 +30,13 @@ const WS_GUID = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 function wsAccept(key) {
   return crypto.createHash("sha1").update(key + WS_GUID).digest("base64");
 }
-function wsFrame(msg) {
+function wsFrame(msg, opcode = 0x1) {
   const p = Buffer.from(String(msg));
   const len = p.length;
   let head;
-  if (len < 126) head = Buffer.from([0x81, len]);
-  else if (len < 65536) { head = Buffer.alloc(4); head[0] = 0x81; head[1] = 126; head.writeUInt16BE(len, 2); }
-  else { head = Buffer.alloc(10); head[0] = 0x81; head[1] = 127; head.writeBigUInt64BE(BigInt(len), 2); }
+  if (len < 126) head = Buffer.from([0x80 | opcode, len]);
+  else if (len < 65536) { head = Buffer.alloc(4); head[0] = 0x80 | opcode; head[1] = 126; head.writeUInt16BE(len, 2); }
+  else { head = Buffer.alloc(10); head[0] = 0x80 | opcode; head[1] = 127; head.writeBigUInt64BE(BigInt(len), 2); }
   return Buffer.concat([head, p]);
 }
 
@@ -137,6 +137,7 @@ const server = http.createServer((req, res) => {
       const m = log.match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/);
       if (m) pubUrl = m[0].replace(/^https:/, "wss:");
     } catch (e) {}
+    if (!pubUrl && req.headers.host) pubUrl = "wss://" + req.headers.host;
     res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(JSON.stringify({ url: pubUrl || "" }));
     return;
@@ -149,7 +150,7 @@ const server = http.createServer((req, res) => {
       + "<p>在线题库：<b>" + Object.keys(QUIZ_DATA.quiz).length + " 个学科库，共 " + total + " 题</b>（把题目追加到 quiz-data.json 即可扩充）</p>"
       + "<p>网页文件列表：</p><ul>"
       + fs.readdirSync(__dirname).filter(f => /\.(html|js)$/.test(f)).map(f => `<li><a href="/${encodeURIComponent(f)}">${f}</a></li>`).join("")
-      + "</ul><p>中继地址（填到游戏「中继联机」里）：<b>ws://" + (req.socket.localAddress === "::" ? "你的IP" : req.socket.localAddress) + ":" + PORT + "</b></p></body>";
+      + "</ul><p>中继地址（填到游戏「中继联机」里）：<b>" + (req.headers.host ? "wss://" + req.headers.host : "ws://" + (req.socket.localAddress === "::" ? "你的IP" : req.socket.localAddress) + ":" + PORT) + "</b></p></body>";
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
     res.end(html);
     return;
@@ -212,4 +213,12 @@ server.listen(PORT, () => {
   console.log("  中继地址:  ws://127.0.0.1:" + PORT + "（局域网请把 127.0.0.1 换成你的电脑 IP）");
   console.log("  跨网络:    配合内网穿透或云服务器，把 ws://公网地址:" + PORT + " 填进游戏「中继联机」");
   console.log("==============================================");
+  // 服务端心跳：每 60 秒给所有在线玩家发 ping，防止闲置 WebSocket 被平台网关掐断（云托管免费层尤其需要）
+  setInterval(() => {
+    for (const room of rooms.values()) {
+      for (const c of room.players) {
+        try { c.socket.write(wsFrame("", 0x9)); } catch (e) {}
+      }
+    }
+  }, 60000);
 });
