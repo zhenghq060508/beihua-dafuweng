@@ -445,6 +445,7 @@ button:focus-visible{outline:3px solid rgba(194,64,46,.5);outline-offset:2px}
   <symbol id="i-train" viewBox="0 0 24 24"><path d="M5 3h14v12H5V3Zm3 3v4h8V6H8Zm0 6h8v2H8v-2Zm-2 4h12v3l-2 1h-3l-1-1-1 1H8l-2-1v-3Zm7 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></symbol>
   <symbol id="i-money" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1.2 14.6V18h-2.4v-1.3c-1.5-.3-2.6-1.3-2.7-2.9h2.1c.1.8.7 1.4 1.9 1.4 1 0 1.7-.4 1.7-1.2 0-.6-.4-1-1.4-1.2l-1.5-.3c-1.6-.3-2.6-1.2-2.6-2.7 0-1.6 1.2-2.6 3-2.8V6h2.4v1.2c1.4.3 2.3 1.2 2.4 2.7h-2.1c-.1-.7-.6-1.1-1.6-1.1-.9 0-1.5.3-1.5 1.1 0 .6.4.9 1.3 1.1l1.6.4c1.7.4 2.7 1.3 2.7 2.8 0 1.7-1.3 2.7-3.1 2.9Z"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></symbol>
+  <symbol id="i-run" viewBox="0 0 24 24"><path d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM9 8l-2.5 2.5L8 12l3-2 2 3 2-1-2.5-4.5-2.5 1L9 8Zm1.5 7-3.5 3 1.5 1.5 4.5-3.5.5 3 1.5 1V15l-4-1.5.5-1.5 2 1 1.5-1-2.5-1.5-4 1.5-1-1Z"/></symbol>
   <symbol id="i-star2" viewBox="0 0 24 24"><path d="M12 17.3 6.2 20l1.1-6.5L2.5 9l6.5-1L12 2l3 6 6.5 1-4.8 4.5L17.8 20 12 17.3Z"/></symbol>
   <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3Zm13 3a4 4 0 0 0-2-3.5v7a4 4 0 0 0 2-3.5Zm-2-7.6v2.2a6 6 0 0 1 0 10.8v2.2a8 8 0 0 0 0-15.2Z"/></symbol>
   <symbol id="i-mute" viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3Zm13.6 3 2.7-2.7-1.4-1.4L15.2 11l-2.7-2.7-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4-2.7-2.7Z"/></symbol>
@@ -781,7 +782,13 @@ const EVENTS = {
     {t:"共享单车围城", d:"自行车被共享单车包围，花半小时才骑出来。", eff:{mo:-10}},
     {t:"食堂排队太长", d:"食堂队伍太长，改点外卖，多花了点钱但吃到了好的。", eff:{m:-25,mo:10}},
     {t:"失物招领处", d:"有人捡到了你丢的校园卡送回来，你感激地回赠了张咖啡券。", eff:{mo:10}, item:"coffee"},
-    {t:"跳蚤市场", d:"在跳蚤市场淘到一张绝版暖宝宝，冬天有救了。", item:"warm"}
+    {t:"跳蚤市场", d:"在跳蚤市场淘到一张绝版暖宝宝，冬天有救了。", item:"warm"},
+    {t:"小组作业被鸽", d:"组员说好的分工没做，你一个人肝到深夜才补完。", eff:{e:-15,mo:-15}},
+    {t:"体测跑出阴影", d:"体测 800 米跑完直接躺平，腿疼了一整天。", eff:{e:-20,mo:-12}},
+    {t:"下雨忘带伞", d:"突降大雨，你被淋成落汤鸡，回宿舍瑟瑟发抖。", eff:{mo:-12,m:-10}},
+    {t:"补考失利", d:"补考还是挂了，教务系统里那个红叉格外刺眼。", eff:{g:-0.05,mo:-15}},
+    {t:"期末周连轴转", d:"连续三天图书馆、宿舍、食堂三点一线，人快被榨干了。", eff:{e:-15,mo:-8}},
+    {t:"宿舍断电查寝", d:"刚要开黑就被断电查寝，一口气没地方出。", eff:{mo:-10}}
   ],
   animal: [
     {t:"大鹅学长", d:"大鹅学长正悠闲地在湖边散步，气场两米八。", feed:{m:-10,e:20,mo:8}, watch:{e:12}},
@@ -794,17 +801,20 @@ const EVENTS = {
     {t:"吹湖风", d:"湖风吹过脸颊，你深呼吸了几口新鲜空气。", auto:{mo:10,e:10}}
   ],
   courier: [
-    {t:"快递找不到", d:"找遍货架也没找到你的快递，客服登记查找。", eff:{mo:-10,m:-50}},
+    {t:"快递找不到", d:"找遍货架也没找到你的快递，客服登记查找。", eff:{mo:-12,m:-50}},
     {t:"喜欢的东西到了", d:"期待很久的快递终于到了！拆箱瞬间幸福感爆棚。", eff:{m:-50,mo:20}},
     {t:"帮同学代取", d:"顺手帮同学代取快递，赚了跑腿费。", eff:{m:20,mo:5}},
-    {t:"包裹破损", d:"包裹被压变形，申请了理赔。", eff:{m:30,mo:-5}},
-    {t:"排队太久", d:"取件队伍太长，等得有点烦躁。", eff:{mo:-8}}
+    {t:"包裹破损", d:"包裹被压变形，申请了理赔。", eff:{m:30,mo:-10}},
+    {t:"排队太久", d:"取件队伍太长，等得有点烦躁。", eff:{mo:-10}},
+    {t:"生鲜臭了", d:"网购的酸奶放了一下午才取，已经不能喝了。", eff:{m:-15,mo:-8}}
   ],
   activity: [
     {t:"心理咨询", d:"和心理老师聊了聊，轻松了很多。", eff:{mo:20}},
     {t:"社团活动", d:"参加社团团建，认识了一群新朋友。", eff:{mo:15}},
     {t:"课外游戏", d:"桌游局开起来，一玩就是一下午。", eff:{mo:12,e:5}},
-    {t:"行业讲座", d:"听了一场干货满满的讲座，视野打开。", eff:{g:0.02}}
+    {t:"行业讲座", d:"听了一场干货满满的讲座，视野打开。", eff:{g:0.02}},
+    {t:"活动被放鸽子", d:"约好的活动对方临时不来了，你白跑一趟。", eff:{mo:-10}},
+    {t:"辩论赛输球", d:"辩论赛惜败，队友互相甩锅，气氛有点僵。", eff:{mo:-12}}
   ]
 };
 
@@ -822,7 +832,9 @@ const ITEMS = [
   {id:"warm", name:"暖宝宝", icon:"i-heart", desc:"回合内使用：心情 +15", use:"self"},
   {id:"bike", name:"共享单车券", icon:"i-bike", desc:"装备后本次掷骰 +2 步", use:"turn"},
   {id:"skip", name:"免修卡", icon:"i-ticket", desc:"装备后下次落地跳过格子效果", use:"cell"},
-  {id:"swap", name:"时光胶囊", icon:"i-clock", desc:"立即回到 3 格前的位置", use:"cell"}
+  {id:"swap", name:"时光胶囊", icon:"i-clock", desc:"立即回到 3 格前的位置", use:"cell"},
+  {id:"runner", name:"跑友认证", icon:"i-run", desc:"装备后下次掷骰可指定点数（2~12）", use:"turn"},
+  {id:"sprint", name:"你跑不过我你信吗？", icon:"i-bolt", desc:"装备后接下来 3 轮掷骰不消耗体力", use:"turn"}
 ];
 /* 背包：每人最多 3 件，获得后存入，到自己回合可主动使用 */
 function bagOf(p){return p.bag||(p.bag=[]);}
@@ -854,8 +866,9 @@ function useBagItemAt(i){
     toast(it.name+" 已使用："+it.desc);
   }
   else if(it.use==="turn"){
-    p.buffTurn=id;consume();closeModal();renderAll();
-    toast(it.name+" 已装备：本次掷骰生效（+步数）");
+    if(id==="runner"){p.buffFix=1;consume();closeModal();renderAll();toast("跑友认证已装备：下次掷骰可指定点数（2~12）");}
+    else if(id==="sprint"){p.buffFreeRoll=3;consume();closeModal();renderAll();toast("你跑不过我你信吗？已装备：接下来 3 轮掷骰不消耗体力");}
+    else{p.buffTurn=id;consume();closeModal();renderAll();toast(it.name+" 已装备：本次掷骰生效（+步数）");}
   }
   else if(it.use==="cell"){
     if(id==="skip"){p.buffSkip=1;consume();closeModal();renderAll();toast("免修卡已装备：下次落地跳过格子效果");}
@@ -912,8 +925,8 @@ const RULES = {
   rollCost:3, moodLow:20,         // 心情≤20 时掷骰体力消耗翻倍
   passStartMoney:200,             // 经过起点生活费（无绩点加成）
   craftCost:15,                   // 道具工坊体力消耗
-  quizWin:0.05, quizLose:-0.03,   // 普通问答
-  examWin:0.1, examLose:-0.05,    // 考试周
+  quizWin:0.08, quizLose:-0.05,   // 普通问答
+  examWin:0.15, examLose:-0.1,    // 考试周
   failStreakNeed:2,               // 连续答错触发 debuff
   maxRounds:40,
   scoreGpa:600, scoreMood:10, scoreEnergy:10   // 总分 = 生活费 + GPA×600 + 心情×10 + 体力×10
@@ -1017,7 +1030,7 @@ function newGame(){
     const inp=$("#pn-"+i);const name=(inp&&inp.value.trim())||("玩家"+(i+1));
     P.push({name,color:PCOLORS[i%4],cash:RULES.startMoney,gpa:RULES.startGpa,
       energy:RULES.startEnergy,mood:RULES.startMood,pos:0,bag:[],buffTurn:null,buffSkip:0,
-      debuff:null,failStreak:0,alive:true,skip:0,props:{},dbl:0,bailout:0,xp:0});
+      buffFix:0,buffFreeRoll:0,debuff:null,failStreak:0,alive:true,skip:0,props:{},dbl:0,bailout:0,xp:0});
   }
   renderAll();
   showView("view-game");
@@ -1182,13 +1195,46 @@ function doRoll(){
   if(rolling)return;
   const p=curP();
   rolling=true;
+  if(p.buffFix){
+    p.buffFix=0;
+    if(NET.isHost)netSync();
+    openModal(modalHead("跑友认证 · 指定点数","i-run")+
+      `<div class="mdesc">跑友认证生效：这次掷骰的点数由你决定！</div>
+      <div class="opts">${[2,3,4,5,6,7,8,9,10,11,12].map(n=>`<button class="opt" onclick="rollFix(${n})"><span class="key">${n}</span><span>${n} 点</span></button>`).join("")}</div>`,"roll");
+    return;
+  }
+  rollCore(null,null,null,"");
+}
+function rollFix(n){
+  if(!rolling)return;
+  if(n<2||n>12){closeModal();rolling=false;renderAll();return;}
+  const p=curP();
+  let d1=clamp(n-6,1,6);
+  let d2=n-d1;
+  if(d2>6){d2=6;d1=n-d2;}
+  if(d1<1){d1=1;d2=n-d1;}
+  const note=`<div class="eff-line good">跑友认证：指定掷出 <b>${n}</b> 点（${d1}+${d2}）</div>`;
+  rollCore(d1,d2,n,note);
+}
+function rollCore(d1,d2,d,fixNote){
+  const p=curP();
   sfxRoll();
   const cost=RULES.rollCost*(p.mood<=RULES.moodLow?2:1);
-  let d1=rnd(1,6), d2=rnd(1,6);
-  let d=d1+d2, note="";
+  let freeNote="";
+  if(p.buffFreeRoll>0){
+    p.buffFreeRoll--;
+    if(NET.isHost)netSync();
+    freeNote=`<div class="eff-line good">你跑不过我你信吗？：本轮掷骰不消耗体力（还剩 ${p.buffFreeRoll} 轮免费）</div>`;
+  }else{
+    p.energy=clamp(p.energy-cost,0,100);
+  }
+  if(d===null||d===undefined){
+    d1=rnd(1,6);d2=rnd(1,6);d=d1+d2;
+  }
+  let note=fixNote||"";
   if(p.debuff==="confidence"){
     d=Math.ceil(d/2);
-    note=`<div class="eff-line bad">自信心受挫：骰子点数减半，掷出 ${d}</div>`;
+    note+=`<div class="eff-line bad">自信心受挫：骰子点数减半，掷出 ${d}</div>`;
     p.debuff=null;
   }
   if(p.buffTurn==="bike"){
@@ -1196,8 +1242,9 @@ function doRoll(){
     note+=`<div class="eff-line good">共享单车券：多走 2 步（${d1}+${d2}=${d1+d2} → ${d}）</div>`;
     p.buffTurn=null;
   }
+  if(p.buffFreeRoll>0&&!freeNote)freeNote=`<div class="eff-line good">你跑不过我你信吗？：本轮掷骰不消耗体力（还剩 ${p.buffFreeRoll} 轮免费）</div>`;
+  note+=freeNote;
   p.dbl=(d1===d2)?1:0;
-  p.energy=clamp(p.energy-cost,0,100);
   const old=p.pos;
   const np=(old+d)%BOARD.length;
   let passMsg="";
@@ -1230,7 +1277,34 @@ function movePieceAni(i,pos){
   el.classList.remove("hop");void el.offsetWidth;el.classList.add("hop");
 }
 let landDepth=0;
-function afterMove(){landDepth=0;landOn(BOARD[curP().pos]);}
+function afterMove(){
+  landDepth=0;
+  const p=curP();
+  if(p&&p.alive&&round>20&&Math.random()<0.01){runMember();return;}
+  landOn(BOARD[p.pos]);
+}
+/* 后 20 轮彩蛋：1% 概率遇到跑团成员一起跑步 → 得「你跑不过我你信吗？」 */
+function runMember(){
+  const p=curP();
+  const can=p.energy>=5;
+  openModal(modalHead("遇到跑团成员！","i-run")+
+    `<div class="mdesc">一个<b>百花跑团</b>成员正绕着校园跑圈，冲你招手："来一起跑！"<br>· <b>一起跑步</b>：-5 体力，获得道具「你跑不过我你信吗？」（接下来 3 轮掷骰不消耗体力）</div>
+    <div class="mfoot">
+      ${can?`<button class="btn ok" onclick="joinRunMember()">一起跑步（-5 体力）</button>`:`<button class="btn" disabled>体力不足</button>`}
+      <button class="btn ghost sm" onclick="closeModal();landOn(BOARD[p.pos])">婉拒，继续赶路</button>
+    </div>`);
+}
+function joinRunMember(){
+  const p=curP();
+  p.energy=clamp(p.energy-5,0,100);
+  if(NET.isHost)netSync();
+  sfxWin();
+  const ok=addItem(p,"sprint");
+  openModal(modalHead("跑了一圈回来","i-run")+
+    `<div class="eff-line ${ok?"good":"flat"}">和跑团成员刷了 5 公里校园跑：-5 体力${ok?` · 获得 <b>你跑不过我你信吗？</b>（背包 ${bagOf(p).length}/3）`:" · 背包已满（3/3），奖励没拿到"}</div>
+    <div class="mdesc">你跑不过我你信吗？：到自己回合装备后，接下来 3 轮掷骰不消耗体力</div>
+    <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();landOn(BOARD[p.pos])">继续</button></div>`);
+}
 function endTurn(){
   const p=curP();
   if(p&&p.dbl>0){
@@ -1525,7 +1599,11 @@ const CHANCE_POOL=[
   {t:"便利店抽奖",d:"买瓶水顺手抽了个奖，中了咖啡券。",item:"coffee"},
   {t:"拾金不昧",d:"把捡到的校园卡送到失物招领处，好人卡+1。",item:"card"},
   {t:"帮保安大爷搬东西",d:"大爷送你一张保安卡聊表谢意。",item:"guard"},
-  {t:"体育场捡到单车券",d:"停车棚捡到一张共享单车月卡，运气不错。",item:"bike"}
+  {t:"体育场捡到单车券",d:"停车棚捡到一张共享单车月卡，运气不错。",item:"bike"},
+  {t:"体测补考通知",d:"体测没达标，被通知周末补考，瞬间没心情了。",eff:{mo:-15,g:-0.03}},
+  {t:"被社团抓壮丁",d:"社团活动缺人手，被抓去搬了一下午桌椅。",eff:{mo:-12,e:-10}},
+  {t:"大作业被抽检",d:"大作业被抽去答辩，你通宵改了三个版本。",eff:{e:-15,mo:-10}},
+  {t:"奖学金擦肩而过",d:"绩点差 0.02 没评上奖学金，心情复杂。",eff:{mo:-8,g:-0.02}}
 ];
 function onChance(cell){
   const c=pick(CHANCE_POOL);
@@ -1624,7 +1702,7 @@ function onSelfStudy(cell){
     return;
   }
   openModal(modalHead(cell.name+" · 自习挑战","i-school")+
-    `<div class="mdesc">随机抽一款<b>记忆 / 思考小游戏</b>，按表现拿<b>学习称号</b>和绩点（学神 +0.1 / 学霸 +0.06 / 进步生 +0.03）！</div>
+    `<div class="mdesc">随机抽一款<b>记忆 / 思考小游戏</b>，按表现拿<b>学习称号</b>和绩点（学神 +0.15 / 学霸 +0.1 / 进步生 +0.05 / 摸鱼 -0.03）！</div>
     <div class="spin-box" id="study-spin">点击下方按钮抽取</div>
     <div class="mini-pool">${STUDY_MEM_POOL.map(id=>miniTitle(id)).join(" · ")}</div>
     <div class="mfoot">
@@ -1638,17 +1716,17 @@ function selfMore(){
   openModal(modalHead("更多自习方式","i-school")+
     `<div class="mdesc">手动选择自习方式：</div>
     <div class="mini-grid">
-      ${can?`<div class="mini-card" onclick="doSelfStudy()"><b>普通自习</b><span>-8 体力 · +0.05 绩点</span></div>`:`<div class="mini-card" style="opacity:.45"><b>普通自习</b><span>体力不足</span></div>`}
+      ${can?`<div class="mini-card" onclick="doSelfStudy()"><b>普通自习</b><span>-8 体力 · +0.08 绩点</span></div>`:`<div class="mini-card" style="opacity:.45"><b>普通自习</b><span>体力不足</span></div>`}
       <div class="mini-card" onclick="studyBuddyPick()"><b>组队学习</b><span>-5 体力 · 双方 +0.03 绩点</span></div>
-      <div class="mini-card" onclick="memoTrain()"><b>速记挑战</b><span>8 秒记知识点 · 答对 +0.05 绩点</span></div>
+      <div class="mini-card" onclick="memoTrain()"><b>速记挑战</b><span>8 秒记知识点 · 答对 +0.08 绩点</span></div>
     </div>
     <div class="mfoot"><button class="btn ghost sm" onclick="closeModal();endTurn()">离开</button></div>`);
 }
 function doSelfStudy(){
-  const p=curP();p.energy=clamp(p.energy-8,0,100);p.gpa=clamp(p.gpa+0.05,0,RULES.gpaMax);sfxWin();
+  const p=curP();p.energy=clamp(p.energy-8,0,100);p.gpa=clamp(p.gpa+0.08,0,RULES.gpaMax);sfxWin();
   const m=$("#modal-root .modal");
   m.innerHTML=modalHead("自习完成","i-school")+
-    `<div class="eff-line good">刷了一套卷子：-8 体力，+0.05 绩点</div>
+    `<div class="eff-line good">刷了一套卷子：-8 体力，+0.08 绩点</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 function onClinic(cell){
@@ -1740,7 +1818,7 @@ function onQuiz(cell){
   }
   window.QSUBJ_CUR=cell.subj;
   openModal(modalHead(cell.name+" · 学习挑战","i-quiz")+
-    `<div class="mdesc">随机抽一款<b>学习小游戏</b>，按表现拿<b>学习称号</b>和绩点（学神 +0.1 / 学霸 +0.06 / 进步生 +0.03）！</div>
+    `<div class="mdesc">随机抽一款<b>学习小游戏</b>，按表现拿<b>学习称号</b>和绩点（学神 +0.15 / 学霸 +0.1 / 进步生 +0.05 / 摸鱼 -0.03）！</div>
     <div class="spin-box" id="study-spin">点击下方按钮抽取</div>
     <div class="mini-pool">${STUDY_QUIZ_POOL.map(id=>miniTitle(id)).join(" · ")}</div>
     <div class="mfoot">
@@ -1753,9 +1831,9 @@ function studyMore(subj){
   openModal(modalHead("更多学习方式","i-quiz")+
     `<div class="mdesc">手动选择学习方式：</div>
     <div class="mini-grid">
-      <div class="mini-card" onclick="quizSingle('${subj}')"><b>单题问答</b><span>答对 +0.05 · 答错 -0.03</span></div>
+      <div class="mini-card" onclick="quizSingle('${subj}')"><b>单题问答</b><span>答对 +0.08 · 答错 -0.05</span></div>
       <div class="mini-card" onclick="quizGauntlet('${subj}')"><b>知识闯关</b><span>5 题连答 · 答错即止</span></div>
-      <div class="mini-card" onclick="betExam()"><b>考试押题</b><span>花 50 · 押中 +0.1</span></div>
+      <div class="mini-card" onclick="betExam()"><b>考试押题</b><span>花 50 · 押中 +0.15</span></div>
     </div>
     <div class="mfoot"><button class="btn ghost sm" onclick="closeModal();endTurn()">离开</button></div>`);
 }
@@ -1799,7 +1877,7 @@ function answer(idx){
   const card=$("#modal-root .modal");
   const box=document.createElement("div");
   box.className="eff-line "+(correct?"good":"bad");
-  box.innerHTML=`${correct?"回答正确":"回答错误"}：${q.hint}<br>绩点 ${correct?"+0.05":"-0.03"} → ${p.gpa.toFixed(2)}`;
+  box.innerHTML=`${correct?"回答正确":"回答错误"}：${q.hint}<br>绩点 ${correct?"+0.08":"-0.05"} → ${p.gpa.toFixed(2)}`;
   card.appendChild(box);
   const go=document.createElement("div");go.className="mfoot";
   go.innerHTML=`<button class="btn sm" onclick="closeModal();window.__qDone=false;renderAll();endTurn()">继续</button>`;
@@ -1836,7 +1914,7 @@ function useCheat(){
   const card=$("#modal-root .modal");
   card.innerHTML=modalHead("小纸条","i-eye")+
     `<div class="eff-line good">偷看小纸条：正确答案 <b>${"ABCD"[q.a]} · ${q.opts[q.a]}</b></div>
-    <div class="eff-line">小纸条帮你答对了这道题：绩点 +0.05 → ${p.gpa.toFixed(2)}</div>
+    <div class="eff-line">小纸条帮你答对了这道题：绩点 +0.08 → ${p.gpa.toFixed(2)}</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 function onLab(cell){
@@ -1848,7 +1926,7 @@ function onLab(cell){
   }
   const can=p.energy>=10;
   openModal(modalHead(cell.name+" · 实验挑战","i-school")+
-    `<div class="mdesc">进入实验室挑战：<br>· 做实验：消耗 10 体力，70% 成功 +0.1 绩点<br>· 随机小游戏：抽一款竞技小游戏赢排名奖励！</div>
+    `<div class="mdesc">进入实验室挑战：<br>· 做实验：消耗 10 体力，70% 成功 +0.15 绩点<br>· 随机小游戏：抽一款竞技小游戏赢排名奖励！</div>
     <div class="mfoot">
       <button class="btn" onclick="labMini()">随机小游戏</button>
       ${can?`<button class="btn" onclick="doLab()">做实验</button>`:`<button class="btn" disabled>体力不足</button>`}
@@ -1862,11 +1940,11 @@ function labMini(){
 function doLab(){
   const p=curP();p.energy=clamp(p.energy-10,0,100);
   const ok=Math.random()<0.7;
-  if(ok){p.gpa=clamp(p.gpa+0.1,0,RULES.gpaMax);sfxWin();}
-  else{p.gpa=clamp(p.gpa-0.03,0,RULES.gpaMax);p.cash=clamp(p.cash-20,0,999999);sfxBad();}
+  if(ok){p.gpa=clamp(p.gpa+0.15,0,RULES.gpaMax);sfxWin();}
+  else{p.gpa=clamp(p.gpa-0.05,0,RULES.gpaMax);p.cash=clamp(p.cash-20,0,999999);sfxBad();}
   const m=$("#modal-root .modal");
   m.innerHTML=modalHead("实验结果","i-school")+
-    `<div class="eff-line ${ok?"good":"bad"}">${ok?"实验成功！+0.1 绩点":"实验失败（炸了个烧杯） -0.03 绩点，-20 生活费"}</div>
+    `<div class="eff-line ${ok?"good":"bad"}">${ok?"实验成功！+0.15 绩点":"实验失败（炸了个烧杯） -0.05 绩点，-20 生活费"}</div>
     <div class="mdesc">当前绩点 <b>${p.gpa.toFixed(2)}</b> · 生活费 <b>${p.cash}</b></div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
@@ -1964,10 +2042,10 @@ function betExam(){
   if(p.cash<50){toast("生活费不足 50，无法押题");return;}
   p.cash=clamp(p.cash-50,0,999999);
   const hit=Math.random()<0.6;
-  if(hit){p.gpa=clamp(p.gpa+0.1,0,RULES.gpaMax);sfxWin();}
-  else{p.gpa=clamp(p.gpa-0.03,0,RULES.gpaMax);sfxBad();}
+  if(hit){p.gpa=clamp(p.gpa+0.15,0,RULES.gpaMax);sfxWin();}
+  else{p.gpa=clamp(p.gpa-0.05,0,RULES.gpaMax);sfxBad();}
   openModal(modalHead("考试押题","i-quiz")+
-    `<div class="eff-line ${hit?"good":"bad"}">押注 50 生活费：${hit?"押中了！+0.1 绩点":"押错重点，-0.03 绩点"}</div>
+    `<div class="eff-line ${hit?"good":"bad"}">押注 50 生活费：${hit?"押中了！+0.15 绩点":"押错重点，-0.05 绩点"}</div>
     <div class="mdesc">当前绩点 <b>${p.gpa.toFixed(2)}</b> · 生活费 <b>${p.cash}</b></div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
 }
@@ -2033,7 +2111,7 @@ function memoSettle(score){
   p.gpa=clamp(p.gpa+g,0,RULES.gpaMax);
   p.mood=clamp(p.mood+(score===1?0:-4),0,100);
   openModal(modalHead("速记结果","i-school")+
-    `<div class="eff-line ${score===1?"good":"bad"}">${score===1?"记忆满分：+0.05 绩点":"记岔了：-0.02 绩点，-4% 心情"}</div>
+    `<div class="eff-line ${score===1?"good":"bad"}">${score===1?"记忆满分：+0.08 绩点":"记岔了：-0.05 绩点，-4% 心情"}</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
   if(score===1)sfxWin();else sfxBad();
 }
@@ -2045,7 +2123,7 @@ function flipClass(){
   p.energy=clamp(p.energy-5,0,100);
   const r=Math.random();
   let g=0.01,msg="讲得中规中矩：+0.01 绩点",cls="flat";
-  if(r<0.5){g=0.05;msg="讲得精彩绝伦，全班掌声：+0.05 绩点";cls="good";sfxWin();}
+  if(r<0.5){g=0.08;msg="讲得精彩绝伦，全班掌声：+0.08 绩点";cls="good";sfxWin();}
   else if(r<0.8){g=0.01;msg="讲得中规中矩：+0.01 绩点";cls="flat";sfxClick();}
   else{g=-0.01;msg="讲到一半忘词了：-0.01 绩点";cls="bad";sfxBad();}
   p.gpa=clamp(p.gpa+g,0,RULES.gpaMax);
@@ -2101,7 +2179,7 @@ function onStudy(cell){
   openModal(modalHead(cell.name,"i-school")+
     `<div class="mdesc">在文理楼，你可以：</div>
     <div class="mini-grid">
-      ${canStudy?`<div class="mini-card" onclick="doStudy()"><b>自习</b><span>-8 体力 · +0.05 绩点</span></div>`:`<div class="mini-card" style="opacity:.45"><b>自习</b><span>体力不足</span></div>`}
+      ${canStudy?`<div class="mini-card" onclick="doStudy()"><b>自习</b><span>-8 体力 · +0.08 绩点</span></div>`:`<div class="mini-card" style="opacity:.45"><b>自习</b><span>体力不足</span></div>`}
       <div class="mini-card" onclick="doWorship()"><b>膜拜雕像</b><span>+0.02 绩点</span></div>
       <div class="mini-card" onclick="flipClass()"><b>翻转课堂</b><span>-5 体力 · 你来讲课 ±绩点</span></div>
     </div>
@@ -2109,10 +2187,10 @@ function onStudy(cell){
 }
 function doStudy(){
   const p=curP();p.energy=clamp(p.energy-8,0,100);
-  p.gpa=clamp(p.gpa+0.05,0,RULES.gpaMax);sfxWin();
+  p.gpa=clamp(p.gpa+0.08,0,RULES.gpaMax);sfxWin();
   const m=$("#modal-root .modal");
   m.innerHTML=modalHead("自习时间","i-school")+
-    `<div class="eff-line good">认真学习两小时：-8 体力，+0.05 绩点</div>
+    `<div class="eff-line good">认真学习两小时：-8 体力，+0.08 绩点</div>
     <div class="mdesc">当前绩点 <b>${p.gpa.toFixed(2)}</b> · 体力 <b>${p.energy}</b></div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
@@ -2192,23 +2270,23 @@ function onDining(cell){
   }
   const btns=rows.map((r,ri)=>{
     const can=p.cash>=r.m;
-    return `<button class="opt" ${can?"":"disabled style='opacity:.45'"} onclick="eatAt(${r.m})"><span class="key">${ri+1}</span><span>${r.n}（-${r.m} 生活费，+${r.m}% 心情）</span></button>`;
+    return `<button class="opt" ${can?"":"disabled style='opacity:.45'"} onclick="eatAt(${r.m})"><span class="key">${ri+1}</span><span>${r.n}（-${r.m} 生活费，+${r.m} 体力）</span></button>`;
   }).join("");
   openModal(modalHead(title,"i-bowl")+
-    `<div class="mdesc">${title}有好几个窗口，选一个吃吧：</div><div class="opts">${btns}
+    `<div class="mdesc">${title}有好几个窗口，选一个吃吧（吃饱补充体力）：</div><div class="opts">${btns}
     <button class="opt" onclick="eatAt(0)"><span class="key">0</span><span>不吃了，省生活费</span></button></div>`);
 }
 function eatAt(m){
   const p=curP();
   if(m>0){
     p.cash=clamp(p.cash-m,0,999999);
-    p.mood=clamp(p.mood+m,0,100);
+    p.energy=clamp(p.energy+m,0,100);
     sfxWin();
   }else{sfxClick();}
   const mbox=$("#modal-root .modal");
   mbox.innerHTML=modalHead("吃饱了","i-bowl")+
-    `<div class="eff-line ${m>0?"good":""}">${m>0?"美食下肚，心情大好：-"+m+" 生活费，+"+m+"% 心情":"你决定省下这笔生活费"}</div>
-    <div class="mdesc">生活费 <b>${p.cash}</b> · 心情 <b>${p.mood}%</b></div>
+    `<div class="eff-line ${m>0?"good":""}">${m>0?"美食下肚，体力满满：-"+m+" 生活费，+"+m+" 体力":"你决定省下这笔生活费"}</div>
+    <div class="mdesc">生活费 <b>${p.cash}</b> · 体力 <b>${p.energy}</b></div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 function onRest(cell){
@@ -2268,7 +2346,7 @@ function onExam(cell){
   if(bag.includes("notes"))toolBtns.push(`<button class="btn ghost sm" onclick="useNotesExam()">学霸笔记：答错纠正</button>`);
   if(bag.includes("cheat"))toolBtns.push(`<button class="btn ghost sm" onclick="useCheatExam()">小纸条：看答案</button>`);
   openModal(modalHead(cell.name+" · 综合考试","i-exam")+
-    `<div class="mdesc" style="font-size:12px">答对 <b>+0.1 绩点</b>，答错 <b>-0.05 绩点</b>（可用道具）</div>
+    `<div class="mdesc" style="font-size:12px">答对 <b>+0.15 绩点</b>，答错 <b>-0.1 绩点</b>（可用道具）</div>
     <div class="qcard">${q.q}</div>
     <div class="opts">
       ${q.opts.map((o,i)=>`<button class="opt" onclick="examAnswer(${i})"><span class="key">${"ABCD"[i]}</span><span>${o}</span></button>`).join("")}
@@ -2298,7 +2376,7 @@ function examAnswer(idx){
   const card=$("#modal-root .modal");
   const box=document.createElement("div");
   box.className="eff-line "+(correct?"good":"bad");
-  box.innerHTML=`${correct?"考试通过":"考试失利"}：${q.hint}<br>绩点 ${correct?"+0.1":"-0.05"} → ${p.gpa.toFixed(2)}`;
+  box.innerHTML=`${correct?"考试通过":"考试失利"}：${q.hint}<br>绩点 ${correct?"+0.15":"-0.1"} → ${p.gpa.toFixed(2)}`;
   card.appendChild(box);
   const go=document.createElement("div");go.className="mfoot";
   go.innerHTML=`<button class="btn sm" onclick="closeModal();window.__qDone=false;renderAll();endTurn()">继续</button>`;
@@ -2333,7 +2411,7 @@ function useCheatExam(){
   const card=$("#modal-root .modal");
   card.innerHTML=modalHead("小纸条","i-eye")+
     `<div class="eff-line good">偷看小纸条：正确答案 <b>${"ABCD"[q.a]} · ${q.opts[q.a]}</b></div>
-    <div class="eff-line">小纸条帮你通过了考试：绩点 +0.1 → ${p.gpa.toFixed(2)}</div>
+    <div class="eff-line">小纸条帮你通过了考试：绩点 +0.15 → ${p.gpa.toFixed(2)}</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 function onActivity(cell){
@@ -2368,6 +2446,7 @@ function joinActivity(){
 }
 function onSport(cell){
   const p=curP();
+  if(p.alive&&Math.random()<0.01){runTeam(cell);return;}
   const canEx=p.energy>=10;
   const canWater=p.cash>=10;
   openModal(modalHead(cell.name,"i-ball")+
@@ -2377,6 +2456,28 @@ function onSport(cell){
       ${canWater?`<button class="btn ok sm" onclick="buyWater()">买水</button>`:`<button class="btn ok sm" disabled>生活费不足</button>`}
       <button class="btn ghost sm" onclick="closeModal();endTurn()">离开</button>
     </div>`);
+}
+/* 运动场彩蛋：1% 偶遇百花跑团 → 加入训练得「跑友认证」 */
+function runTeam(cell){
+  const p=curP();
+  const can=p.energy>=10;
+  openModal(modalHead("偶遇百花跑团！","i-run")+
+    `<div class="mdesc">在 ${cell.name} 碰上了正在热身的<b>百花跑团</b>，领队热情邀请你加入今天的合练！<br>· <b>加入训练</b>：-10 体力，获得道具「跑友认证」（下次掷骰可指定点数）</div>
+    <div class="mfoot">
+      ${can?`<button class="btn ok" onclick="joinRunTeam()">加入训练（-10 体力）</button>`:`<button class="btn" disabled>体力不足</button>`}
+      <button class="btn ghost sm" onclick="closeModal();endTurn()">婉拒，继续赶路</button>
+    </div>`);
+}
+function joinRunTeam(){
+  const p=curP();
+  p.energy=clamp(p.energy-10,0,100);
+  if(NET.isHost)netSync();
+  sfxWin();
+  const ok=addItem(p,"runner");
+  openModal(modalHead("加入百花跑团","i-run")+
+    `<div class="eff-line ${ok?"good":"flat"}">跟着跑团完成了一组训练：-10 体力${ok?` · 获得 <b>跑友认证</b>（背包 ${bagOf(p).length}/3）`:" · 背包已满（3/3），训练成果没带走"}</div>
+    <div class="mdesc">跑友认证：到自己回合装备后，下次掷骰可指定 2~12 点</div>
+    <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
 }
 function doExercise(){
   const p=curP();const rainy=weatherNow()==="雨";
@@ -2400,10 +2501,10 @@ function onLake(cell){
   if(Math.random()<moz){
     sfxBad();
     p.cash=clamp(p.cash-8,0,999999);
-    p.mood=clamp(p.mood-5,0,100);
+    p.mood=clamp(p.mood-12,0,100);
     openModal(modalHead(cell.name+" · 被蚊子咬了！","i-lake")+
       `<div class="mdesc">荷塘边蚊子太凶，你被咬了好几口，只能买花露水。</div>
-      <div class="eff-line bad">花露水 -8 生活费，心情 -5%</div>
+      <div class="eff-line bad">花露水 -8 生活费，心情 -12%</div>
       <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`);
     return;
   }
@@ -2496,17 +2597,19 @@ function onPrint(cell){
     </div>`);
 }
 function doPrint(){
-  const p=curP();p.cash=clamp(p.cash-50,0,999999);p.gpa=clamp(p.gpa+0.05,0,RULES.gpaMax);sfxWin();
+  const p=curP();p.cash=clamp(p.cash-50,0,999999);p.gpa=clamp(p.gpa+0.08,0,RULES.gpaMax);sfxWin();
   const m=$("#modal-root .modal");
   m.innerHTML=modalHead("打印完成","i-print")+
-    `<div class="eff-line good">厚厚一沓复习资料到手：-50 生活费，+0.05 绩点</div>
+    `<div class="eff-line good">厚厚一沓复习资料到手：-50 生活费，+0.08 绩点</div>
     <div class="mfoot"><button class="btn sm" onclick="closeModal();renderAll();endTurn()">继续</button></div>`;
 }
 
 /* ================= 结算 ================= */
 function totalScore(p){
   if(!p.alive)return 0;
-  return p.cash+p.gpa*RULES.scoreGpa+p.mood*RULES.scoreMood+p.energy*RULES.scoreEnergy;
+  let s=p.cash+p.gpa*RULES.scoreGpa+p.mood*RULES.scoreMood+p.energy*RULES.scoreEnergy;
+  if(p.gpa>3.8){s+=300;}   // 保研资格彩蛋：绩点>3.8 结算 +300 分
+  return s;
 }
 function settlement(){
   const ranked=P.slice().sort((a,b)=>totalScore(b)-totalScore(a));
@@ -2515,9 +2618,10 @@ function settlement(){
   if(winner)medal=winner.name+" 夺得校园传奇称号！";
   const list=ranked.map((p,i)=>{
     const sc=totalScore(p);
+    const grad=p.gpa>3.8?'<span class="tag">🎓保研 +300</span>':"";
     return `<div class="rank-item ${i===0?"win":""}">
       <div class="rno">${i+1}</div>
-      <div class="rname"><span class="chip" style="background:${p.color}"></span>${p.name}${!p.alive?'<span class="tag">已出局</span>':""}</div>
+      <div class="rname"><span class="chip" style="background:${p.color}"></span>${p.name}${!p.alive?'<span class="tag">已出局</span>':""}${grad}</div>
       <div class="rassets">${p.cash} 生活费<br>GPA ${p.gpa.toFixed(2)} · 心情 ${p.mood}% · 体力 ${p.energy}</div>
       <div class="rval"><b>${sc.toLocaleString()}</b>总分</div>
     </div>`;
@@ -2525,7 +2629,7 @@ function settlement(){
   openModal(modalHead("游戏结束 · 结算","i-crown")+
     `<div class="mdesc" style="text-align:center;font-weight:800;color:var(--accent)">${medal}</div>
     <div class="rank-list">${list}</div>
-    <div class="eff-line">总评分 = 生活费 + GPA×${RULES.scoreGpa} + 心情×${RULES.scoreMood} + 体力×${RULES.scoreEnergy}</div>
+    <div class="eff-line">总评分 = 生活费 + GPA×${RULES.scoreGpa} + 心情×${RULES.scoreMood} + 体力×${RULES.scoreEnergy}${P.some(x=>x.gpa>3.8)?" · 绩点 &gt;3.8 保研 +300":""}</div>
     <div class="mfoot"><button class="btn" onclick="closeModal();backSetup()">再来一局</button></div>`,"end");
 }
 function backSetup(){if(NET.mode!=="local")NET.reset();showView("view-setup");}
@@ -2545,17 +2649,18 @@ function renderHelp(){
       <li>经过<b>南校门</b>领 300 生活费（不加绩点）</li>
       <li>绩点 <b>&lt;2.0</b> 收到警告；<b>&lt;1.0</b> 强制自习一回合（不能掷骰）；心情 0 时强制休息</li>
       <li>心情 <b>&lt;30%</b> 时无法参与学习类事件（答题、考试、自习、实验、打印、讲座）</li>
+      <li><b>保研彩蛋</b>：结算时绩点 <b>&gt;3.8</b> 获得「保研资格」，总评分 <b>+300</b>！</li>
     </ul>
     <h2>知识问答</h2>
     <ul>
-      <li><b>学习挑战</b>：问答格 / 自习格落地即随机抽一款学习小游戏开玩（单词达人 / 成语补全 / 历史时间线 / 元素配对 / 图形推理 / 数独入门 / 快闪记忆 / 速记挑战 / 知识竞速 / 校园百晓生 / 物化判断等），按表现拿学习称号（学神 +0.1 / 学霸 +0.06 / 进步生 +0.03 / 摸鱼 +0 绩点）</li>
+      <li><b>学习挑战</b>：问答格 / 自习格落地即随机抽一款学习小游戏开玩（单词达人 / 成语补全 / 历史时间线 / 元素配对 / 图形推理 / 数独入门 / 快闪记忆 / 速记挑战 / 知识竞速 / 校园百晓生 / 物化判断等），按表现拿学习称号（学神 +0.15 / 学霸 +0.1 / 进步生 +0.05 / 摸鱼 -0.03 绩点）</li>
       <li><b>题库随机</b>：每局从 300+ 题大题库随机抽题不固定；联网时自动接入 OpenTDB 外部题库补充英文通用题</li>
       <li><b>学识养成</b>：学习按表现积累 XP（S +30 / A +20 / B +10 / C +2），升级解锁称号：见习生 → 助教 → 讲师 → 副教授 → 教授 → 院士；讲师起学习省 1 体力，教授起绩点额外 +0.01</li>
       <li><b>学识等级</b>：面板实时显示当前学识称号（见习生 → 院士）</li>
-      <li>图书馆 / 明德广场 / 校史馆：单题问答 / <b>知识闯关</b>（5 题连答，答错即止，全对 +0.1 绩点）/ <b>考试押题</b>（花 50 押注，60% 押中 +0.1 绩点）</li>
+      <li>图书馆 / 明德广场 / 校史馆：单题问答（答对 +0.08 / 答错 -0.05）/ <b>知识闯关</b>（5 题连答，答错即止，全对 +0.1 绩点）/ <b>考试押题</b>（花 50 押注，60% 押中 +0.15 绩点）</li>
       <li>校史馆：校内知识问答（建校年份、食堂数量等）</li>
       <li>素质拓展基地：体育知识问答</li>
-      <li>考试周：综合考试，答对 +0.1、答错 -0.05 绩点</li>
+      <li>考试周：综合考试，答对 +0.15、答错 -0.1 绩点</li>
       <li><b>连续答错 2 次</b>触发「自信心受挫」debuff：下次骰子点数减半（向上取整）；防护镜可免疫</li>
       <li>锤子可免答/免考一次</li>
     </ul>
@@ -2572,7 +2677,7 @@ function renderHelp(){
       <li><b>玉屏山索道</b>：20 生活费直达柳湖 / 荷塘</li>
       <li><b>机会卡</b>：校园机会卡格随机抽取（红包 / 赞助 / 晨跑 / 导师约谈等）</li>
       <li><b>明德广场套圈</b>：20 生活费套圈赢奖品</li>
-      <li><b>自习格</b>（一教 / 二教教学楼）：普通自习（-8 体力 +0.05）/ <b>组队学习</b>（选队友双方 +0.03 绩点）/ <b>速记挑战</b>（8 秒记知识点，答对 +0.05 绩点）</li>
+      <li><b>自习格</b>（一教 / 二教教学楼）：普通自习（-8 体力 +0.08）/ <b>组队学习</b>（选队友双方 +0.03 绩点）/ <b>速记挑战</b>（8 秒记知识点，答对 +0.08 绩点）</li>
       <li><b>校医院</b>：随机健康事件</li>
       <li><b>大活迷你游戏角</b>：51 款单人小游戏随机抽取（记忆翻牌 / 校园跑酷 / PK 学霸 / 抓鸭达人 / 点数大作战 / 校园猜谜 / 拼图大师 / 猜拳大战 / 口算快答 / 接金币 / 火眼金睛 / 幸运转盘 / 快闪记忆 / 单词达人 / 成语补全 / 历史时间线 / 元素配对 / 图形推理 / 数独入门 / 打地鼠 / 迷宫寻宝 / 火眼找不同 / 顺序点按 / 21 点 / 猜大小 / 福袋开箱 / 罚球投篮 / 跳绳达人 / 躲避球 / 赛车冲刺 / 射箭大师 / 井字棋 / 按压力度 / 视觉计数 / 今日运势 / 速记挑战 / 知识竞速 / 校园百晓生 / 物化判断 / 脑筋急转弯 / 侦探推理 / emoji 猜词 / 诗词填空 / 成语接龙 / 贪吃蛇 / 打砖块 / 2048 / 扫雷 / 翻牌配对 / 套圈 / 节奏点按），按 S / A / B / C 排名给奖励；另有 20 款全员联机小游戏</li>
       <li><b>多人 · 全员开一局</b>（7 款，全员同时参与）：<b>全员竞答</b>（5 题快问快答）、<b>全员骰战</b>（比骰子 +50）、<b>全员猜拳</b>（投注 20 赢家通吃）、<b>比慢大赛</b>（按住不放最后松手 +40）、<b>反应力对决</b>（绿灯最快 +30）、<b>连点风暴</b>（10 秒手速 +30）、<b>趣味投票站</b>（3 题投多数派 +25）、<b>纸牌对决</b>（3 轮比牌总分冠军 +40）、<b>吹气球</b>（按住充气吹爆归零 +40）、<b>打字大赛</b>（3 句拼音短句 +40）、<b>记忆格子</b>（记 4×4 亮灯 +40）、<b>顺序点按</b>（从 1 点到 9 最快 +40）、<b>排序大师</b>（3 轮从小到大最快 +40）、<b>抛硬币淘汰赛</b>（猜对晋级最后一人 +50）、<b>全员拍卖会</b>（出价抢好物）、<b>口算接力</b>（5 题同答 +40）、<b>数字记忆</b>（记 5 位数字 +40）、<b>瞄准大师</b>（10 秒点靶 +40）、<b>大转盘</b>（全员各转）、<b>幸运抽签</b>（随机签文）</li>
@@ -2581,17 +2686,18 @@ function renderHelp(){
     <h2>地点事件（44 格）</h2>
     <ul>
       <li>教学楼阶梯教室：绩点抽奖转盘（+0.08 / +0.05 / -0.02 / +0）或随机学习挑战</li>
-      <li>文理楼：自习（-8 体力 +0.05）/ 膜拜马克思雕像（+0.02）/ 翻转课堂（你来讲课 ±绩点）</li>
-      <li>实验楼 A/F：实验挑战（-10 体力，70% 成功 +0.1 绩点）</li>
+      <li>文理楼：自习（-8 体力 +0.08）/ 膜拜马克思雕像（+0.02）/ 翻转课堂（你来讲课 ±绩点）</li>
+      <li>实验楼 A/F：实验挑战（-10 体力，70% 成功 +0.15 绩点）</li>
       <li>柳湖：大鹅学长、猫学长、蛤蟆先生等（喂食或远观，加体力/心情）</li>
       <li>工程训练中心：消耗 15 体力加工一件随机道具（12 种），存入背包</li>
       <li>花海：大学生活随机事件（有正面有负面）</li>
-      <li>玉兰餐厅：玉兰一 / 玉兰二（-15/-18 生活费 +心情）</li>
-      <li>紫竹餐厅：紫竹一/二/三、民族食堂、满座食堂（10~18 生活费）</li>
+      <li>玉兰餐厅：玉兰一 / 玉兰二（-15/-18 生活费 +体力）</li>
+      <li>紫竹餐厅：紫竹一/二/三、民族食堂、满座食堂（10~18 生活费换体力）</li>
       <li>樱花园：休息，体力+20%、心情+20%；杏坛苑：宿舍区，无特殊事件</li>
       <li>玉屏山：爬山（-10 体力 +18 心情）、拍照（+12 心情）或乘索道</li>
       <li>大学生活动中心：咨询/社团/游戏/讲座（消耗 5 体力，可选参加）+ 迷你游戏角</li>
-      <li>操场 / 篮球场 / 体育馆：锻炼（-10 体力 +15 心情）或买水（-10 生活费 +20 体力）</li>
+      <li>操场 / 篮球场 / 体育馆：锻炼（-10 体力 +15 心情）或买水（-10 生活费 +20 体力）；<b>1% 概率偶遇百花跑团</b>，加入训练得「跑友认证」</li>
+      <li><b>跑团彩蛋</b>：后 20 轮移动时 1% 概率遇到跑团成员，一起跑步得「你跑不过我你信吗？」</li>
       <li>素质拓展基地：体育知识问答；荷塘：奶茶 / 发呆 / 拍照，33% 概率被蚊子咬（买花露水 -8）</li>
       <li>西校门：出去吃顿好的（-100~200 生活费，心情不足 80% 恢复到 80%）</li>
       <li>超市：烛光 / 水果 / 快递超市随机（-15/-15/-20 生活费 +15 体力 +10 心情）</li>
@@ -3281,7 +3387,7 @@ function miniSettle(payload){
   if(window.__studyMode){
     const g=payload.g,data=payload.data,p=curP();
     const rank=miniRank(g,data);
-    const eff={S:0.1,A:0.06,B:0.03,C:0}[rank]||0;
+    const eff={S:0.15,A:0.1,B:0.05,C:-0.03}[rank]||0;
     const title={S:"学神",A:"学霸",B:"进步生",C:"摸鱼选手"}[rank];
     const lv=xpLevel(p.xp||0);
     const xpGain={S:30,A:20,B:10,C:2}[rank]||2;
@@ -6580,15 +6686,15 @@ const PAT_Q=[
  {q:"序列 “2 4 6 8 ？” 中缺失的数字是？",opts:["9","10","12","14"],a:1,hint:"偶数列，8+2=10"}
 ];
 const SUDO_Q=[
- {g:"123434122143432?",a:1,opts:["1","2","3","4"],hint:"第4行 4 3 2 ? 缺 1"},
- {g:"23144132324114?3",a:2,opts:["1","2","3","4"],hint:"第3行 3 2 4 1，第3列 1 3 ? 3→缺 2"},
- {g:"342112431413231?",a:3,opts:["1","2","3","4"],hint:"第4行 2 3 1 ? 缺 4"},
- {g:"41232314143232?1",a:3,opts:["1","2","3","4"],hint:"第3行 1 4 3 2，第4列 3 4 2 ?→缺 1？行判定：第4行 3 2 ? 1 缺 4"},
- {g:"134224314213312?",a:3,opts:["1","2","3","4"],hint:"第4行 3 1 2 ? 缺 4"},
- {g:"24133142132442?3",a:1,opts:["1","2","3","4"],hint:"第4行 4 2 3 ? 缺 1"},
- {g:"314224134312231?",a:3,opts:["1","2","3","4"],hint:"第4行 2 3 1 ? 缺 4"},
- {g:"42311423213431?2",a:1,opts:["1","2","3","4"],hint:"第4行 3 1 ? 2 缺 4？行判：4 3 1 ? 2 → 缺 4，但选项无 4？查列：第4列 1 3 4 ? 2 缺 1"},
- {g:"132424133142421?",a:2,opts:["1","2","3","4"],hint:"第4行 4 2 1 ? 缺 3"}
+ {g:"123434122143432?",a:0,opts:["1","2","3","4"],hint:"第4行 4 3 2 ?，缺 1"},
+ {g:"123443212143?412",a:2,opts:["1","2","3","4"],hint:"第4行 ? 4 1 2 缺 3；第1列 1 4 2 ? 缺 3"},
+ {g:"123434212?434312",a:0,opts:["1","2","3","4"],hint:"第3行 2 ? 4 3 缺 1；第2列 2 4 ? 3 缺 1"},
+ {g:"134224?132144123",a:2,opts:["1","2","3","4"],hint:"第2行 2 4 ? 1 缺 3；第3列 4 ? 1 2 缺 3"},
+ {g:"2?43431212343421",a:0,opts:["1","2","3","4"],hint:"第1行 2 ? 4 3 缺 1；第2列 ? 3 2 4 缺 1"},
+ {g:"31244213134?2431",a:1,opts:["1","2","3","4"],hint:"第3行 1 3 4 ? 缺 2；第4列 4 3 ? 1 缺 2"},
+ {g:"41232?4134121234",a:2,opts:["1","2","3","4"],hint:"第2行 2 ? 4 1 缺 3；第2列 1 ? 4 2 缺 3"},
+ {g:"24?3314213244231",a:0,opts:["1","2","3","4"],hint:"第1行 2 4 ? 3 缺 1；第3列 ? 4 2 3 缺 1"},
+ {g:"14233241?1322314",a:3,opts:["1","2","3","4"],hint:"第3行 ? 1 3 2 缺 4；第1列 1 3 ? 2 缺 4"}
 ];
 function playWordquiz(){mcqStart("wordquiz",shuffle(WORD_Q).slice(0,8));}
 function playIdiom(){mcqStart("idiom",shuffle(IDIOM_Q).slice(0,8));}
@@ -7100,9 +7206,9 @@ function mcqRender(){
   if(d.qi>=d.qs.length){mcqDone();return;}
   const q=d.qs[d.qi];
   const grid=q.g?`<div class="sudo-grid">${q.g.split("").map((c,i)=>`<div class="sudo-cell ${i===15?"miss":""}">${i===15?"?":c}</div>`).join("")}</div>`:"";
+  const desc=q.q?`<div class="mdesc">${q.q}</div>`:(q.g?`<div class="mdesc small">补齐 ? 处缺失的数字（每行 / 每列 / 每宫 1~4 不重复）</div>`:"");
   openModal(modalHead(MCQ_TITLE[d.g]+" · 第 "+(d.qi+1)+" / "+d.qs.length+" 题","i-star")+
-    `${grid}
-    <div class="mdesc">${q.q}</div>
+    `${grid}${desc}
     <div class="opts">
       ${q.opts.map((o,i)=>`<button class="opt" onclick="mcqPick(${i})"><span class="key">${"ABCD"[i]}</span><span>${o}</span></button>`).join("")}
     </div>
